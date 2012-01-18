@@ -1,0 +1,17 @@
+# hello messages
+hello_msg=こんにちは！
+hello_user_msg=こんにちは、{{user.first}}！アプリケーションクラウドへようこそ！
+
+# goodbye messages
+goodbye_msg=さようなら！
+goodbye_user_msg=さようなら、{{user.first}}！アプリケーションのクラウドを使ってくれてありがとう！
+
+# error messages
+error_msg_100=おっと！エラーが発生しました。
+error_msg_101=要求がキャンセルされました。
+error_msg_102=この機能は利用できません。
+error_msg_103=カメラは使用できません。
+error_msg_104=要求を完了できませんでした。
+
+# other messages
+loading_msg=読み込み中...

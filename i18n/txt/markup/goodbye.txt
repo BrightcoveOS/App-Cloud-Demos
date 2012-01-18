@@ -1,0 +1,6 @@
+===== goodbye-intro
+<h1>{{goodbye_msg|blank>Later!}}</h1>
+
+<p>{{goodbye_user_msg}}</p>
+
+<img class="flag" src="../images/flags/{{lang}}.png" width="200" height="135"/>

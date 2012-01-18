@@ -1,0 +1,17 @@
+===== hello-intro
+<h1>{{hello_msg|blank>Hiya!}}</h1>
+
+<p>{{hello_user_msg}}</p>
+
+===== hello-news
+<ul class="results">
+    {{results}}
+        <li data-result-id="{{guid}}">
+            <h2>{{title}}</h2>
+
+            <p>{{description|clean|chop>200}}</p>
+
+            <p><small>{{pubDate|date}}</small></p>
+        </li>
+    {{/results}}
+</ul>

@@ -1,0 +1,17 @@
+# hello messages
+hello_msg=¡Hola!
+hello_user_msg=¡Hola, {{user.first}}! ¡Bienvenido a App Cloud!
+
+# goodbye messages
+goodbye_msg=¡Adios!
+goodbye_user_msg=¡Adios, {{user.first}}! ¡Gracias por user App Cloud!
+
+# error messages
+error_msg_100=Oops! Hubo un error.
+error_msg_101=La solicitud fue cancelada.
+error_msg_102=Esta característica no está disponible.
+error_msg_103=La cámara no está disponible.
+error_msg_104=La petición no pudo ser completada.
+
+# other messages
+loading_msg=por favor espera
