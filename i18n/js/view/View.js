@@ -119,11 +119,6 @@ function View() {
         msg.style.opacity = 0;
     };
 
-    // show this view
-    this.show = function () {
-        document.body.style.visibility = "visible";
-    };
-
     // translate a bc error code into a user-friendly message
     this.getErrorMessage = function (code) {
         return this.translate("error_msg_" + (code || 100)) || "Oops!";
