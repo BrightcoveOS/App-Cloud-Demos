@@ -1,0 +1,120 @@
+body {
+    background-color: #28343b;
+    color: white;
+    font-size: 90%;
+}
+
+#videos {
+    padding: 10px 0;
+}
+
+ul.results {
+    list-style: none;
+    margin: 0;
+}
+
+ul.results li {
+    background: -webkit-linear-gradient(60deg, #28343b 0%, #6e777f 100%);
+    box-shadow: 2px 2px 4px 0 #000;
+    min-width: 200px;
+    min-height: 55px;
+    margin: 6px;
+    padding: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    -webkit-box-align: top;
+}
+
+ul.results li .thumbnail {
+    -webkit-box-flex: 0;
+    padding: 8px;
+}
+
+ul.results li .thumbnail img {
+    background-color: black;
+    border: 1px solid white;
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.75);
+}
+
+ul.results li .content {
+    -webkit-box-flex: 1;
+    padding: 8px;
+}
+
+ul.results li .content h2 {
+    font-size: 105%;
+}
+
+ul.results li .content p {
+    margin-bottom: 4px;
+}
+
+ul.results li .content small {
+    font-size: 75%;
+    color: #CCC;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 150%;
+    letter-spacing: -1px;
+}
+
+.pubdate {
+}
+
+.runtime {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #EEE;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 15px;
+}
+
+.loading {
+    background-color: #FC0;
+    color: #333;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-weight: bold;
+    font-size: 85%;
+    padding: 3px 6px;
+    z-index: 1000;
+    -webkit-transition: opacity 250ms linear;
+}
+
+@media all and (orientation: landscape) {
+    ul.results {
+        text-align: center;
+    }
+
+    ul.results li .thumbnail {
+        padding: 5px 0 3px 0;
+    }
+
+    ul.results .content {
+        padding: 0 2px;
+    }
+
+    ul.results li {
+        display: inline-block;
+        vertical-align: top;
+        height: 185px;
+        width: 30%;
+        margin: 6px 4px;
+    }
+}
+
+@media all and (orientation: landscape) and (min-width: 321px) {
+    ul.results li {
+        width: 46%;
+    }
+}
+
+@media all and (orientation: landscape) and (min-width: 768px) {
+    ul.results li {
+        width: 23%;
+    }
+}
