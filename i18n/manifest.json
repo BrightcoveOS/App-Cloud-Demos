@@ -9,7 +9,7 @@
     "views": [
         {
             "navigationTitle": "Hello",
-            "navigationIcon": "images/icons/icon-hello.png",
+            "navigationIcon": "images/icons/hello.png",
             "uri": "html/hello.html",
             "settings": [ ],
             "styles": [ ],
@@ -23,7 +23,7 @@
         },
         {
             "navigationTitle": "Goodbye",
-            "navigationIcon": "images/icons/icon-goodbye.png",
+            "navigationIcon": "images/icons/goodbye.png",
             "uri": "html/goodbye.html",
             "settings": [ ],
             "styles": [ ],
