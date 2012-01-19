@@ -14,7 +14,7 @@ function View() {
     // language resources by name
     var resources = {};
 
-    // HTML templates by name
+    // HTML templates by name
     var templates = {};
 
     // load templates and resources (before doing anything else)
