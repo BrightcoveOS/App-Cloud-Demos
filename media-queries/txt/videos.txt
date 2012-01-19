@@ -10,7 +10,7 @@
                     <h2>{{name|chop>100}}</h2>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
                     <small>
-                        <span class="pubdate">{{publishedDate|date}} / {{playsTotal|numberformat}} {{playsTotal|equals>1|choose>view>views}}</span>
+                        <span class="pubdate">{{publishedDate|date}}</span>
                         <span class="runtime">{{length|runtime>1000}}</span>
                     </small>
                 </div>
