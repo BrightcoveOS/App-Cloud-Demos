@@ -1,3 +1,3 @@
-Mark.pipes.date = function (str) {
-    return (new Date(str)).toLocaleString();
+Mark.pipes.datetime = function (date) {
+    return new Date(+date || date).toLocaleString();
 };

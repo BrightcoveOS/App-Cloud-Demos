@@ -11,7 +11,7 @@
 
             <p>{{description|clean|chop>200}}</p>
 
-            <p><small>{{pubDate|date}}</small></p>
+            <p><small>{{pubDate|datetime}}</small></p>
         </li>
     {{/results}}
 </ul>

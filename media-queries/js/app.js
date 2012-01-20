@@ -1,5 +1,5 @@
-Mark.pipes.date = function (int) {
-    return (new Date(+int)).toLocaleDateString();
+Mark.pipes.date = function (date) {
+    return new Date(+date || date).toLocaleDateString();
 };
 
 Mark.pipes.runtime = function (time, factor) {
