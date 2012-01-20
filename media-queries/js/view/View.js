@@ -39,7 +39,7 @@ function View() {
         if (!msg) {
             msg = document.createElement("div");
             msg.className = "loading";
-            msg.innerHTML = this.translate("loading_msg");
+            msg.innerHTML = "Loading ...";
             document.body.appendChild(msg);
         }
 

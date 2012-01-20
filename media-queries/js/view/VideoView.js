@@ -4,6 +4,8 @@ function VideoView() {
     this.init = function () {
         bc.device.setAutoRotateDirections(["all"]);
 
+        self.showLoading();
+
         self.loadTemplates("../txt/videos.txt", function() {
             bc.core.getData("videos", renderPlaylist, handleError);
         });
@@ -15,6 +17,8 @@ function VideoView() {
         var markup = Mark.up(template, context);
 
         document.getElementById("videos").innerHTML = markup;
+
+        self.hideLoading();
     };
 
     var handleError = function (error) {
