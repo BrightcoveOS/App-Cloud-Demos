@@ -1,5 +1,6 @@
 /*
-  Markup.js v1.3: http://github.com/adammark/Markup.js
+  Markup.js v1.3.1: http://github.com/adammark/Markup.js
+  MIT License
   (c) 2011 Adam Mark
 */
 var Mark = {
@@ -12,7 +13,7 @@ var Mark = {
     // argument delimiter
     delimiter: ">",
 
-    // helper fn: copy array a, or copy array a into b. return b
+    // return a copy of array A or copy array A into array B (returning B)
     _copy: function (a, b) {
         b = b || [];
 
@@ -23,12 +24,12 @@ var Mark = {
         return b;
     },
 
-    // helper fn: get the size of an array or number
+    // get the length of array A, or simply return A. see pipes, below
     _size: function (a) {
         return a instanceof Array ? a.length : a;
     },
 
-    // an iterator with an index (0...n-1) ("#") and size (n) ("##")
+    // an object with an index (0...n-1) ("#") and size (n) ("##")
     _iter: function (idx, size) {
         this.idx = idx;
         this.size = size;
@@ -41,37 +42,44 @@ var Mark = {
 
     // pipe an obj through filters. e.g. _pipe(123, "add>10|times>5")
     _pipe: function (val, filters) {
-        var filter = filters.shift(), fn, args;
+        // get the first filter, e.g. "add>10"
+        var filter = filters.shift(), parts, fn, args;
 
         if (filter) {
-            fn = filter.split(Mark.delimiter).shift().trim();
-            args = filter.split(Mark.delimiter).splice(1);
+            parts = filter.split(Mark.delimiter); // e.g. ["add", "10"]
+            fn = parts[0].trim(); // e.g. "add"
+            args = parts.splice(1); // e.g. "10"
+
             try {
+                // apply the piped fn to val, then pipe again
                 val = Mark._pipe(Mark.pipes[fn].apply(null, [val].concat(args)), filters);
             }
             catch (e) {
             }
         }
 
+        // return the result of the piped value
         return val;
     },
 
     // evaluate an array or object and process its child contents (if any)
     _eval: function (context, filters, child) {
-        var result = context = Mark._pipe(context, filters),
+        var result = Mark._pipe(context, filters),
+            ctx = result,
             i = -1,
-            j;
+            j,
+            opts;
 
         // if result is array, iterate
         if (result instanceof Array) {
             result = "";
-            j = context.length;
+            j = ctx.length;
 
             while (++i < j) {
                 opts = {
                     iter: new Mark._iter(i, j)
                 };
-                result += child ? Mark.up(child, context[i], opts) : context[i];
+                result += child ? Mark.up(child, ctx[i], opts) : ctx[i];
             }
         }
 
@@ -80,7 +88,7 @@ var Mark = {
 
     // get "if" or "else" string from piped result
     _test: function (result, child, context, options) {
-        var str = Mark.up(child, context, options).split(/{{\s*else\s*}}/),
+        var str = Mark.up(child, context, options).split(/\{\{\s*else\s*\}\}/),
             res = (result === false ? str[1] : str[0]);
 
         return Mark.up(res || "", context, options);
@@ -116,7 +124,7 @@ var Mark = {
         b = a + tags[0].length;
         d = c + tags[t].length;
 
-        // return block "{{if abc}}123{{/abc}}" and child of block "123"
+        // return "{{abc}}xyz{{/abc}}" and "xyz"
         return [tpl.substring(a, d), tpl.substring(b, c)];
     }
 };
@@ -126,22 +134,36 @@ Mark.up = function (template, context, options) {
     context = context || {};
     options = options || {};
 
+    // pattern matching any tag, e.g. "{{apples}}" and "{{/apples}}"
     var re = /\{\{\w*[^}]+\w*\}\}/g,
-        tags = template.toString().match(re) || [],
-        pipe = Mark._pipe,
+        // an array of tags
+        tags = template.match(re) || [],
+        // the tag being evaluated
         tag,
+        // the string to evaluate, e.g. "hamster|dance"
         prop,
+        // the token that might be terminated by "{{/token}}"
         token,
+        // an array of filters, e.g. ["more>1", "less>2"]
         filters = [],
+        // is the tag self-closing? e.g. "{{stuff/}}"
         selfy,
+        // is the tag an "if" statement?
         testy,
+        // the string inside a block tag, e.g. "{{a}}...{{/a}}"
         child,
+        // a shortcut for context[prop]
         ctx,
+        // the result string
         result,
+        // the setter being evaluated, or undefined
         setter,
+        // the include being evaluated, or undefined
         include,
+        // iterator variable
         i = 0,
-        x;
+        // iterator variable
+        j = 0;
 
     // set custom pipes, if any
     if (options.pipes) {
@@ -183,7 +205,7 @@ Mark.up = function (template, context, options) {
         }
 
         // skip "else" tags. these will be pulled out in _test()
-        if (/^{{\s*else\s*}}$/.test(tag)) {
+        if (/^\{\{\s*else\s*\}\}$/.test(tag)) {
             continue;
         }
 
@@ -197,18 +219,18 @@ Mark.up = function (template, context, options) {
             if (include instanceof Function) {
                 include = include();
             }
-            result = pipe(Mark.up(include, context), filters);
+            result = Mark._pipe(Mark.up(include, context), filters);
         }
 
         // tag refers to loop counter
         else if (prop.match(/#{1,2}/)) {
             options.iter.sign = prop;
-            result = pipe(options.iter, filters);
+            result = Mark._pipe(options.iter, filters);
         }
 
         // tag refers to current context
         else if (prop === ".") {
-            result = pipe(context, filters);
+            result = Mark._pipe(context, filters);
         }
 
         // tag has dot notation, e.g. "a.b.c"
@@ -217,8 +239,8 @@ Mark.up = function (template, context, options) {
             ctx = context;
 
             // get the actual context
-            for (x = 0; x < prop.length; x++) {
-                ctx = ctx[prop[x]];
+            for (j = 0; j < prop.length; j++) {
+                ctx = ctx[prop[j]];
             }
 
             result = Mark._eval(ctx, filters, child);
@@ -226,7 +248,7 @@ Mark.up = function (template, context, options) {
 
         // tag is otherwise testable
         else if (testy) {
-            result = pipe(ctx, filters);
+            result = Mark._pipe(ctx, filters);
         }
 
         // context is an array. loop through it
@@ -241,7 +263,7 @@ Mark.up = function (template, context, options) {
 
         // else all others
         else if (context.hasOwnProperty(prop)) {
-            result = pipe(ctx, filters);
+            result = Mark._pipe(ctx, filters);
         }
 
         // resolve "if" statements
