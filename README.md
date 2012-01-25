@@ -8,6 +8,6 @@ template should be run from a local web server.
 Download the Workshop app at http://bit.ly/iworkshop (iOS) or 
 http://bit.ly/aworkshop (Android).
 
-See the [App Cloud docs](docs.brightcove.com/en/app-cloud/) and the
-[App Cloud public mailing list](groups.google.com/group/bcappcloud) for
+See the [App Cloud docs](http://docs.brightcove.com/en/app-cloud/) and the
+[App Cloud public mailing list](http://groups.google.com/group/bcappcloud) for
 more information about any of the techniques you see here.
