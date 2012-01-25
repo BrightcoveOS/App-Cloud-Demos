@@ -11,3 +11,6 @@ http://bit.ly/aworkshop (Android).
 See the [App Cloud docs](http://docs.brightcove.com/en/app-cloud/) and the
 [App Cloud public mailing list](http://groups.google.com/group/bcappcloud) for
 more information about any of the techniques you see here.
+
+Additional code samples are available in the App Cloud SDK, which can be downloaded 
+from [App Cloud Studio](https://appcloud.brightcove.com/).
