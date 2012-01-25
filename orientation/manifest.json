@@ -1,0 +1,30 @@
+{
+    "name": "App Cloud Media Queries and Flexbox demo",
+    "description": "CSS Bomb",
+    "version": "1.0",
+    "devices": [ "iPad" ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": "true"
+        },
+        "iOS": {
+            "nativeNavigation": "true"
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Videos",
+            "navigationIcon": "images/icons/videos.png",
+            "uri": "html/videos.html",
+            "settings": [],
+            "styles": [],
+            "data": [
+                {
+                    "name": "videos",
+                    "contentConnector": "4e4bd2231f1998155f000714",
+                    "type": "video_cloud"
+                }
+            ]
+        }
+    ]
+}
