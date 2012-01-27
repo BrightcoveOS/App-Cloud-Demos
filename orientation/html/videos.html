@@ -24,7 +24,7 @@
 <script>
 var view;
 
-$(document).ready(function (evt) {
+$(bc).bind("init", function (evt) {
     if (!view) {
         view = new VideoView();
         view.init();
