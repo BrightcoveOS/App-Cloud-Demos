@@ -177,7 +177,8 @@ bc.lib = {};
         };
     
     settings = $.extend( {}, defaults, options );
-    globalSessionStore = JSON.parse( window.sessionStorage.getItem( bc.appID + "_" + contentFeed ) );
+    globalSessionStore = window.sessionStorage.getItem( bc.appID + "_" + contentFeed );
+    globalSessionStore = ( globalSessionStore === null ) ? globalSessionStore : JSON.parse( globalSessionStore );
     //If this a global data request then we should check to see if there was a request already being made.
     if( isGlobalRequest && globalSessionStore && bc.core.requestExists( globalSessionStore, settings ) ) {
       if( window.sessionStorage.getItem( bc.appID + "_data_" + contentFeed ) ) {
