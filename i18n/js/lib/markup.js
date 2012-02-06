@@ -1,5 +1,5 @@
 /*
-  Markup.js v1.3.1: http://github.com/adammark/Markup.js
+  Markup.js v1.5: http://github.com/adammark/Markup.js
   MIT License
   (c) 2011 Adam Mark
 */
@@ -12,6 +12,16 @@ var Mark = {
 
     // argument delimiter
     delimiter: ">",
+
+    // default language, for i18n
+    lang: "en",
+
+    // plural forms, for i18n
+    plurals: {
+        "en": function (msgs, n) {
+            return msgs[n === 1 ? 0 : 1];
+        }
+    },
 
     // return a copy of array A or copy array A into array B (returning B)
     _copy: function (a, b) {
@@ -26,7 +36,7 @@ var Mark = {
 
     // get the length of array A, or simply return A. see pipes, below
     _size: function (a) {
-        return a instanceof Array ? a.length : a;
+        return a instanceof Array ? a.length : (a || 0);
     },
 
     // an object with an index (0...n-1) ("#") and size (n) ("##")
@@ -35,12 +45,12 @@ var Mark = {
         this.size = size;
         this.length = size;
         this.sign = "#";
-        this.toString = this.valueOf = function () {
+        this.toString = function () {
             return this.idx + this.sign.length - 1;
         };
     },
 
-    // pipe an obj through filters. e.g. _pipe(123, "add>10|times>5")
+    // pipe an obj through filters. e.g. _pipe(123, ["add>10","times>5"])
     _pipe: function (val, filters) {
         // get the first filter, e.g. "add>10"
         var filter = filters.shift(), parts, fn, args;
@@ -185,6 +195,9 @@ Mark.up = function (template, context, options) {
         child = "";
         selfy = tag.indexOf("/}}") > -1;
         prop = tag.substr(2, tag.length - (selfy ? 5 : 4));
+        prop = prop.replace(/`(.+)`/g, function (s, p1) {
+            return Mark.up("{{" + p1 + "}}", context);
+        });
         testy = prop.trim().indexOf("if ") === 0;
         filters = prop.split("|").splice(1);
         prop = prop.replace(/^\s*if/, "").split("|").shift().trim();
@@ -280,14 +293,14 @@ Mark.up = function (template, context, options) {
 
 // "out of the box" pipes. see README
 Mark.pipes = {
-    blank: function (str, val) {
-        return !!str || str === 0 ? str : val;
-    },
     empty: function (obj) {
         return !obj || (obj + "").trim().length === 0 ? obj : false;
     },
     notempty: function (obj) {
         return obj && (obj + "").trim().length ? obj : false;
+    },
+    blank: function (str, val) {
+        return !!str || str === 0 ? str : val;
     },
     more: function (a, b) {
         return Mark._size(a) > b ? a : false;
@@ -312,7 +325,7 @@ Mark.pipes = {
         return a != b ? a : false;
     },
     like: function (str, pattern) {
-        return new RegExp(pattern).test(str) ? str : false;
+        return new RegExp(pattern, "i").test(str) ? str : false;
     },
     notlike: function (str, pattern) {
         return !Mark.pipes.like(str, pattern) ? str : false;
@@ -342,9 +355,6 @@ Mark.pipes = {
     round: function (num) {
         return Math.round(+num);
     },
-    style: function (str, classes) {
-        return '<span class="' + classes + '">' + str + '</span>';
-    },
     clean: function (str) {
         return String(str).replace(/<\/?[^>]+>/gi, "");
     },
@@ -360,17 +370,17 @@ Mark.pipes = {
     join: function (arr, separator) {
         return arr.join(separator);
     },
-    limit: function (arr, count) {
-        return arr.slice(0, count);
-    },
-    slice: function (arr, start, length) {
-        return arr.slice(+start, (+start) + (+length));
+    limit: function (arr, count, idx) {
+        return arr.slice(+idx || 0, +count + (+idx || 0));
     },
     split: function (str, separator) {
         return str.split(separator || ",");
     },
     choose: function (bool, iffy, elsy) {
         return !!bool ? iffy : elsy;
+    },
+    toggle: function (obj, csv1, csv2, str) {
+        return csv2.split(",")[csv1.match(/\w+/g).indexOf(obj + "")] || str;
     },
     sort: function (arr, prop) {
         var fn = function (a, b) {
@@ -410,6 +420,9 @@ Mark.pipes = {
     },
     last: function (iter) {
         return iter.idx === iter.size - 1;
+    },
+    pluralize: function (str, n) {
+        return Mark.plurals[Mark.lang](str.split(";;"), +n).trim();
     },
     call: function (obj, fn) {
         return obj[fn].apply(obj, [].slice.call(arguments, 2));
