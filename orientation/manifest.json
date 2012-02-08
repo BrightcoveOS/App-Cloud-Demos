@@ -1,7 +1,6 @@
 {
     "name": "App Cloud Media Queries and Flexbox demo",
     "description": "CSS Bomb",
-    "version": "1.0",
     "devices": [ "iPad" ],
     "platformConfig": {
         "android": {
