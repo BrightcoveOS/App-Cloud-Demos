@@ -1,0 +1,57 @@
+===== articles
+<div id="subnav">
+    <button id="save-all-button">Save all</button>
+</div>
+
+<ul class="results">
+    {{articles}}
+        <li data-result-id="{{guid}}">
+            <div class="item-content">
+                <a href="{{link}}">
+                    <h2>{{title}}</h2>
+                    <p>{{description|clean|tease>25}}</p>
+                    <p>
+                        <small>{{pubDate|datetime}}</small>
+                    </p>
+                </a>
+            </div>
+            <div class="item-controls">
+                <button data-result-id="{{guid}}" class="add-remove-button {{if favorite}}favorite{{/if}}">
+                    {{favorite|choose>Saved!>Save}}
+                </button>
+            </div>
+        </li>
+    {{/articles}}
+</ul>
+
+===== favorites
+{{if favorites}}
+    <div id="subnav">
+        <button id="clear-all-button">Remove all</button>
+    </div>
+{{/if}}
+
+<ul class="results">
+    {{favorites}}
+        <li data-result-id="{{guid}}">
+            <div class="item-content">
+                <a href="{{link}}">
+                    <h2>{{title}}</h2>
+                    <p>{{description|clean|tease>15}}</p>
+                    <p>
+                        <small>{{pubDate|datetime}}</small>
+                    </p>
+                </a>
+            </div>
+            <div class="item-controls">
+                <button data-result-id="{{guid}}" class="remove-button favorite">
+                    Remove
+                </button>
+            </div>
+        </li>
+    {{/favorites}}
+</ul>
+
+<p id="warn" class="warn" style="display:{{favorites|empty|choose>inline-block>none}}">
+    There are no articles in your reading list.
+</p>

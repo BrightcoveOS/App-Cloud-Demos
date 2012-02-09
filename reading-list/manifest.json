@@ -1,0 +1,24 @@
+{
+    "name": "App Cloud Reading List demo",
+    "description": "Demo",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "views": [
+        {
+            "navigationTitle": "News",
+            "navigationIcon": "images/icons/news.png",
+            "uri": "html/news.html",
+            "settings": [ ],
+            "styles": [ ],
+            "data": [
+                {
+                    "name": "google-news",
+                    "contentFeed": "4e5b98ce899b8a67a5012d26",
+                    "type": "feed"
+                }
+            ]
+        }
+    ]
+}

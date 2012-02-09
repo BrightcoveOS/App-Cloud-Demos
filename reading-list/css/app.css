@@ -1,0 +1,122 @@
+body {
+    font-size: 90%;
+}
+
+#content {
+    padding: 10px;
+}
+
+button {
+    display: inline-block;
+    color: white;
+    background-color: #CCC;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 12px;
+}
+
+button:active {
+    background-color: #AAA;
+}
+
+.tab {
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 100%;
+}
+
+.on {
+    background-color: #666;
+}
+
+h1 {
+    font-size: 175%;
+}
+
+h2 {
+    font-size: 125%;
+}
+
+a {
+    color: black;
+}
+
+a h2 {
+    color: #369;
+}
+
+.loading {
+    background-color: #FC0;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 85%;
+    padding: 3px 6px;
+    z-index: 1000;
+    -webkit-transition: opacity 250ms linear;
+}
+
+ul.results {
+    list-style: none;
+    margin: 0;
+}
+
+ul.results li {
+    background-color: #EEE;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
+}
+
+ul.results p {
+    margin-bottom: 4px;
+}
+
+ul.results small {
+    font-size: 75%;
+    color: #888;
+}
+
+ul.results .item-content {
+    -webkit-box-flex: 1;
+}
+
+ul.results .item-controls {
+    -webkit-box-flex: 0;
+    padding-left: 15px;
+}
+
+.favorite {
+    background-color: #69C;
+}
+
+.warn {
+    margin: 25px 0;
+    padding: 20px;
+    display: inline-block;
+    background-color: #FFC;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+#nav {
+    padding: 8px;
+}
+
+#subnav {
+    text-align: right;
+}
+
+#save-all-button, #clear-all-button {
+    top: 10px;
+    right: 10px;
+    color: #333;
+}
