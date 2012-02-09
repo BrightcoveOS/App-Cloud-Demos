@@ -1071,26 +1071,8 @@ bc.utils = {};
     }
    */
    bc.utils.hasTouchSupport = function() {
-     var event;
-     
-     if( _supportsTouch !== undefined ) {
-       return _supportsTouch;
-     }
-
-     if( "createTouch" in document ) { // True on the iPhone
-       _supportsTouch = true;
-       return _supportsTouch;
-     }
-     
-     try {
-       event = document.createEvent( "TouchEvent" ); // Should throw an error if not supported
-       _supportsTouch = !!event.initTouchEvent; // Check for existence of initialization function
-       return _supportsTouch;
-     } catch( error ) {
-       _supportsTouch = false;
-       return _supportsTouch;
-     }
-   };   
+      return (_supportsTouch = "ontouchend" in document);
+   };
   
   /**
    * Returns a number from a string that is passed in.  If the string ends in 'px' (for pixels), then it is stripped off and that
