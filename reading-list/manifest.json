@@ -1,6 +1,7 @@
 {
     "name": "App Cloud Reading List demo",
     "description": "Demo",
+    "version": "1.0",
     "devices": [
         "iPhone",
         "Android"

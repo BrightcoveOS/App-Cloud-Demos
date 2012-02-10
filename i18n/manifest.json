@@ -1,6 +1,7 @@
 {
     "name": "App Cloud i18n demo",
     "description": "Hello World / Hola Mundo",
+    "version": "1.0",
     "devices": [
         "iPhone",
         "Android"
