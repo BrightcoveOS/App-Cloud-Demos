@@ -14,3 +14,15 @@ more information about any of the techniques you see here.
 
 Additional code samples are available in the App Cloud SDK, which can be downloaded 
 from [App Cloud Studio](https://appcloud.brightcove.com/).
+
+## Demos
+
+* **i18n:** Demonstrates multi-language support at the HTML/JS layer using a
+JavaScript templating system, properties files, and parameterized content
+feeds.
+
+* **orientation:** Demonstrates how to alter a layout when switching between 
+landscape and portrait modes using CSS3 Media Queries and Flexible Box Model.
+
+* **reading-list:** Demonstrates how to use `bc.core.cache()` to set and get
+a list of saved articles.
