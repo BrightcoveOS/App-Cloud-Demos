@@ -55,7 +55,6 @@ function NewsView() {
         });
 
         $("#save-all-button").live("tap", function (evt) {
-            console.log(this);
             addAllToFavorites();
         });
 
