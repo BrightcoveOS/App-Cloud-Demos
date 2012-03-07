@@ -1,5 +1,5 @@
 /*
-  Markup.js v1.5: http://github.com/adammark/Markup.js
+  Markup.js v1.5.3: http://github.com/adammark/Markup.js
   MIT License
   (c) 2011 Adam Mark
 */
@@ -12,16 +12,6 @@ var Mark = {
 
     // argument delimiter
     delimiter: ">",
-
-    // default language, for i18n
-    lang: "en",
-
-    // plural forms, for i18n
-    plurals: {
-        "en": function (msgs, n) {
-            return msgs[n === 1 ? 0 : 1];
-        }
-    },
 
     // return a copy of array A or copy array A into array B (returning B)
     _copy: function (a, b) {
@@ -192,6 +182,7 @@ Mark.up = function (template, context, options) {
 
     // loop through tags, e.g. {{a}}, {{b}}, {{c}}, {{/c}}
     while ((tag = tags[i++])) {
+        result = undefined;
         child = "";
         selfy = tag.indexOf("/}}") > -1;
         prop = tag.substr(2, tag.length - (selfy ? 5 : 4));
@@ -377,7 +368,7 @@ Mark.pipes = {
         return str.split(separator || ",");
     },
     choose: function (bool, iffy, elsy) {
-        return !!bool ? iffy : elsy;
+        return !!bool ? iffy : (elsy || "");
     },
     toggle: function (obj, csv1, csv2, str) {
         return csv2.split(",")[csv1.match(/\w+/g).indexOf(obj + "")] || str;
@@ -420,9 +411,6 @@ Mark.pipes = {
     },
     last: function (iter) {
         return iter.idx === iter.size - 1;
-    },
-    pluralize: function (str, n) {
-        return Mark.plurals[Mark.lang](str.split(";;"), +n).trim();
     },
     call: function (obj, fn) {
         return obj[fn].apply(obj, [].slice.call(arguments, 2));
