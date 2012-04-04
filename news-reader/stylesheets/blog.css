@@ -1,0 +1,71 @@
+header h1 {
+    color: white;
+}
+
+ul.articles li {
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #CCC;
+    padding: 15px 10px;
+    display: -webkit-box;
+}
+
+ul.articles li .thumbnail {
+    -webkit-box-flex: 1;
+    margin: 0 10px 10px 0;
+    border: 1px solid #CCC;
+}
+
+ul.articles li .teaser {
+    -webkit-box-flex: 1;
+}
+
+ul.articles li .date {
+    margin: 5px 0;
+}
+
+small {
+    background-color: #EEE;
+    padding: 3px 8px;
+    border-radius: 25px;
+    color: #666;
+    font-weight: bold;
+}
+
+article {
+    padding: 10px;
+}
+
+article h2 {
+    margin-bottom: 10px;
+}
+
+article .text {
+    margin-top: 15px;
+}
+
+article p {
+    margin-bottom: 15px;
+}
+
+article .image-area {
+    text-align: center;
+    margin: 15px 10px 10px 10px;
+}
+
+article img {
+    border: 4px solid black;
+}
+
+.loading {
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 85%;
+    padding: 3px 6px;
+    z-index: 1000;
+    -webkit-transition: opacity 250ms linear;
+}

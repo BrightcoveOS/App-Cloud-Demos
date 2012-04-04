@@ -1,0 +1,37 @@
+===== list-template
+<ul class="articles">
+    {{articles}}
+        <li data-guid="{{guid}}">
+            {{if media_content_url}}
+                <img class="thumbnail" src="{{media_content_url|thumb>`media_content_width`>`media_content_height`>75}}" width="75" height="75"/>
+            {{else}}
+                <img class="thumbnail" src="../images/default.png" width="75" height="75"/>
+            {{/if}}
+
+            <div class="teaser">
+                <h3>{{title}}</h3>
+
+                <p>{{content_encoded|clean|tease>50}}</p>
+
+                <div class="date">
+                    <small>{{pubDate|moment>dddd, MMM D YYYY, h:mm a}}</small>
+                </div>
+            </div>
+        </li>
+    {{/articles}}
+</ul>
+
+===== detail-template
+<h2>{{article.title}}</h2>
+
+<small>{{article.pubDate|moment>dddd, MMM D YYYY, h:mm a}}</small>
+
+{{if article.media_content_url}}
+    <div class="image-area">
+        <img src="{{article.media_content_url|image>250}}" width="250"/>
+    </div>
+{{/if}}
+
+<div class="text">
+    {{article.content_encoded|clean|grafs}}
+</div>
