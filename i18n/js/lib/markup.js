@@ -1,5 +1,5 @@
 /*
-  Markup.js v1.5.4: http://github.com/adammark/Markup.js
+  Markup.js v1.5.8: http://github.com/adammark/Markup.js
   MIT License
   (c) 2011 Adam Mark
 */
@@ -7,14 +7,14 @@ var Mark = {
     // templates to include, by name
     includes: {},
 
-    // setters, by name
-    setters: {},
+    // global variables, by name
+    globals: {},
 
     // argument delimiter
     delimiter: ">",
 
     // compact white space between HTML nodes
-    compact: true,
+    compact: false,
 
     // return a copy of array A or copy array A into array B (returning B)
     _copy: function (a, b) {
@@ -159,8 +159,8 @@ Mark.up = function (template, context, options) {
         ctx,
         // the result string
         result,
-        // the setter being evaluated, or undefined
-        setter,
+        // the global being evaluated, or undefined
+        global,
         // the include being evaluated, or undefined
         include,
         // iterator variable
@@ -176,6 +176,11 @@ Mark.up = function (template, context, options) {
     // set templates to include, if any
     if (options.includes) {
         this._copy(options.includes, this.includes);
+    }
+
+    // set global variables, if any
+    if (options.globals) {
+        this._copy(options.globals, this.globals);
     }
 
     // override delimiter
@@ -194,7 +199,7 @@ Mark.up = function (template, context, options) {
         child = "";
         selfy = tag.indexOf("/}}") > -1;
         prop = tag.substr(2, tag.length - (selfy ? 5 : 4));
-        prop = prop.replace(/`(.+)`/g, function (s, p1) {
+        prop = prop.replace(/`([^`]+)`/g, function (s, p1) {
             return Mark.up("{{" + p1 + "}}", context);
         });
         testy = prop.trim().indexOf("if ") === 0;
@@ -221,9 +226,9 @@ Mark.up = function (template, context, options) {
             continue;
         }
 
-        // tag refers to setter
-        else if ((setter = this.setters[prop])) {
-            result = this._eval(setter, filters, child);
+        // tag refers to a global
+        else if ((global = this.globals[prop]) !== undefined) {
+            result = this._eval(global, filters, child);
         }
 
         // tag refers to included template
@@ -248,11 +253,19 @@ Mark.up = function (template, context, options) {
         // tag has dot notation, e.g. "a.b.c"
         else if (prop.match(/\./)) {
             prop = prop.split(".");
-            ctx = context;
+            ctx = Mark.globals[prop[0]];
+
+            if (ctx) {
+                j = 1;
+            }
+            else {
+                j = 0;
+                ctx = context;
+            }
 
             // get the actual context
-            for (j = 0; j < prop.length; j++) {
-                ctx = ctx[prop[j]];
+            while (j < prop.length) {
+                ctx = ctx[prop[j++]];
             }
 
             result = this._eval(ctx, filters, child);
@@ -424,6 +437,6 @@ Mark.pipes = {
         return obj[fn].apply(obj, [].slice.call(arguments, 2));
     },
     set: function (obj, key) {
-        Mark.setters[key] = obj; return "";
+        Mark.globals[key] = obj; return "";
     }
 };
