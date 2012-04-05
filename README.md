@@ -26,3 +26,6 @@ landscape and portrait modes using CSS3 Media Queries and Flexible Box Model.
 
 * **reading-list:** Demonstrates how to use `bc.core.cache()` to set and get
 a list of saved articles.
+
+* **news-reader:** Demonstrates how to create a simple news view from an RSS 
+feed.
