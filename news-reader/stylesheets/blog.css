@@ -69,3 +69,9 @@ article img {
     z-index: 1000;
     -webkit-transition: opacity 250ms linear;
 }
+
+@media all and (orientation: portrait) {
+}
+
+@media all and (orientation: landscape) {
+}

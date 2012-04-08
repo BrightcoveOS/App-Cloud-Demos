@@ -27,6 +27,16 @@
                     "contentFeed": "4e85fe9acacd90355f00688d",
                     "type": "feed"
                 }
+            ],
+            "settings": [
+            ],
+            "styles": [
+                {
+                    "name": "article-index-title",
+                    "type": "color",
+                    "attribute": "color",
+                    "value": "#0066CC"
+                }
             ]
         }
     ]

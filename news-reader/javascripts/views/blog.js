@@ -1,5 +1,4 @@
 function BlogView() {  
-    var load_msg;
 
     // initialize this view
     this.init = function () {
@@ -14,6 +13,9 @@ function BlogView() {
 
         // then load fresh data
         bc.core.getData("blog", handleData, handleError);
+
+        // apply any dynamic styles
+        bc.core.applyStyles();
     };
 
     // set up event handlers
@@ -29,6 +31,11 @@ function BlogView() {
         // listen for a "back" tap
         $(".back-button").live("tap", function (evt) {
             bc.ui.backPage();
+        });
+
+        // recalculate scroll depth when images are loaded
+        $(".page img").load(function (evt) {
+            bc.ui.refreshScrollers();
         });
     };
 
@@ -49,16 +56,18 @@ function BlogView() {
 
     // handle an error response from bc.core.getData()
     var handleError = function (error) {
+        //bc.device.alert("Oops!");
+
         console.error(error);
     };
 
     // render the list of articles
     var renderArticleList = function () {
-        var template = bc.templates["list-template"];
+        var template = bc.templates["index-template"];
         var context = { "articles": getSavedArticles() };
         var markup = Mark.up(template, context);
 
-        document.getElementById("article-list").innerHTML = markup;
+        document.getElementById("article-index").innerHTML = markup;
     };
 
     // render an individual article
@@ -98,22 +107,16 @@ function BlogView() {
         return null;
     };
 
-    // show a "Loading" message
+    // show the "loading" message
     var showLoadingMessage = function () {
-        if (!load_msg) {
-            load_msg = document.createElement("div");
-            load_msg.className = "loading";
-            load_msg.innerHTML = "Loading ...";
-            document.body.appendChild(load_msg);
-        }
-
-        load_msg.style.opacity = 1;
+        document.getElementById("loading").style.opacity = 1;
     };
 
-    // hide the "Loading" message
+    // hide the "loading" message
     var hideLoadingMessage = function () {
-        load_msg.style.opacity = 0;
+        document.getElementById("loading").style.opacity = 0;
     };
+
 }
 
 // initialize the view when bc is ready
@@ -121,3 +124,6 @@ $(bc).bind("init", function () {
     var view = new BlogView();
     view.init();
 });
+
+// enable auto-rotation
+bc.device.setAutoRotateDirections(["all"]);

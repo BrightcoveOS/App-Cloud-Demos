@@ -4,16 +4,23 @@
 <head>
     <title>Blog</title>
 
+    <!-- required meta tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="bc-manifest" content="../manifest.json" />
 
+    <!-- brightcove styles -->
     <link rel="stylesheet" href="../stylesheets/theme-1.9.css" />
+
+    <!-- custom styles -->
     <link rel="stylesheet" href="../stylesheets/blog.css" />
 
+    <!-- brightcove script -->
     <script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.9.js"></script>
+
+    <!-- custom scripts -->
     <script type="text/javascript" src="../javascripts/lib/moment.min.js"></script>
     <script type="text/javascript" src="../javascripts/app.js"></script>
     <script type="text/javascript" src="../javascripts/views/blog.js"></script> 
@@ -21,20 +28,22 @@
 
 <body>
 
-<!-- Page 1 -->
-<div class="page" id="list-page">
+<div id="loading" class="loading">Loading ...</div>
+
+<!-- index page -->
+<div class="page" id="index-page">
     <header class="header">
         <h1>Blog</h1>
     </header>
 
     <div class="scroller">
-        <div id="article-list">
-            <!-- wait for it -->
+        <div id="article-index">
+            <!-- template -->
         </div>
     </div>
 </div>
 
-<!-- Page 2 -->
+<!-- detail page -->
 <div class="page" id="detail-page">
     <header class="header">
         <button class="back-button"></button>
@@ -43,7 +52,7 @@
 
     <div class="scroller">
         <article id="article-detail">
-            <!-- wait for it -->
+            <!-- template -->
         </article>
     </div>
 </div>

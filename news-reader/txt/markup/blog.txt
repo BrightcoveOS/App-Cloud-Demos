@@ -1,4 +1,4 @@
-===== list-template
+===== index-template
 <ul class="articles">
     {{articles}}
         <li data-guid="{{guid}}">
@@ -9,7 +9,7 @@
             {{/if}}
 
             <div class="teaser">
-                <h3>{{title}}</h3>
+                <h3 class="article-index-title">{{title}}</h3>
 
                 <p>{{content_encoded|clean|tease>50}}</p>
 
@@ -22,7 +22,7 @@
 </ul>
 
 ===== detail-template
-<h2>{{article.title}}</h2>
+<h2 class="article-detail-title">{{article.title}}</h2>
 
 <small>{{article.pubDate|moment>dddd, MMM D YYYY, h:mm a}}</small>
 
