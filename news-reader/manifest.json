@@ -1,6 +1,6 @@
 {
-    "name": "news-reader",
-    "description": "Please provide a description for this template.",
+    "name": "News Reader Template",
+    "description": "A simple, sample news app.",
     "version": "1.0",
     "devices": [
         "iPhone",
