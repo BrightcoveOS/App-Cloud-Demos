@@ -32,7 +32,7 @@
                 {
                     "name": "date-format",
                     "type": "string",
-                    "value": "dddd, MMM D YYYY, h:mm a"
+                    "value": "ddd, MMM D YYYY, h:mm a"
                 }
             ],
             "styles": [
