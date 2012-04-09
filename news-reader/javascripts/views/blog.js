@@ -63,6 +63,8 @@ function BlogView() {
 
     // render the list of articles
     var renderArticleList = function () {
+        Mark.globals.dateFormat = bc.core.getSetting("date-format");
+
         var template = bc.templates["index-template"];
         var context = { "articles": getSavedArticles() };
         var markup = Mark.up(template, context);

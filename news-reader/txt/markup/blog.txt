@@ -14,7 +14,7 @@
                 <p>{{content_encoded|clean|tease>50}}</p>
 
                 <div class="date">
-                    <small>{{pubDate|moment>dddd, MMM D YYYY, h:mm a}}</small>
+                    <small>{{pubDate|moment>`dateFormat`}}</small>
                 </div>
             </div>
         </li>
@@ -24,7 +24,7 @@
 ===== detail-template
 <h2 class="article-detail-title">{{article.title}}</h2>
 
-<small>{{article.pubDate|moment>dddd, MMM D YYYY, h:mm a}}</small>
+<small>{{article.pubDate|moment>`dateFormat`}}</small>
 
 {{if article.media_content_url}}
     <div class="image-area">

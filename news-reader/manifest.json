@@ -29,6 +29,11 @@
                 }
             ],
             "settings": [
+                {
+                    "name": "date-format",
+                    "type": "string",
+                    "value": "dddd, MMM D YYYY, h:mm a"
+                }
             ],
             "styles": [
                 {
