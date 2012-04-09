@@ -16,7 +16,7 @@
     },
     "views": [
         {
-            "navigationTitle": "blog",
+            "navigationTitle": "Blog",
             "navigationIcon": "images/icons/blog.png",
             "uri": "./html/blog.html",
             "locales": "./txt/locales/en.txt",
