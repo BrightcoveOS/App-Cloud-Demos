@@ -70,6 +70,8 @@ function BlogView() {
         var markup = Mark.up(template, context);
 
         document.getElementById("article-index").innerHTML = markup;
+
+        bc.ui.refreshScrollers();
     };
 
     // render an individual article
@@ -84,6 +86,8 @@ function BlogView() {
         var page = document.getElementById("detail-page");
 
         bc.ui.forwardPage(page);
+
+        bc.ui.refreshScrollers();
     };
 
     // get blog articles from cache, or return an empty array
@@ -129,3 +133,8 @@ $(bc).bind("init", function () {
 
 // enable auto-rotation
 bc.device.setAutoRotateDirections(["all"]);
+
+// lock scrolling (TODO move into bc.js)
+$(document).bind("touchstart", function(e) {
+    e.preventDefault();
+});
