@@ -13,3 +13,4 @@ This template demonstrates how to make a simple news view from an
 * Transitioning from one "page" to another with `bc.ui.forwardPage()`
 and `bc.ui.backPage()`
 * Cropping images with App Cloud image transcoding service
+* Starting and stopping a content session (for analytics)

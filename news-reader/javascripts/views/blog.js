@@ -1,4 +1,6 @@
 function BlogView() {  
+    // current content session ID, for content analytics
+    var contentSessionId = null;
 
     // initialize this view
     this.init = function () {
@@ -26,14 +28,23 @@ function BlogView() {
             var article = getArticle(guid);
 
             renderArticleDetail(article);
+
+            startContentSession(article);
         });
 
         // listen for a "back" tap
         $(".back-button").live("tap", function (evt) {
             bc.ui.backPage();
+
+            endContentSession();
         });
 
-        // recalculate scroll depth when images are loaded
+        // listen for a viewfocus
+        $(bc).bind("viewfocus", function (evt) {
+            endContentSession();
+        });
+
+        // recalculate scroll depth whenever images are loaded
         $(".page img").load(function (evt) {
             bc.ui.refreshScrollers();
         });
@@ -82,11 +93,9 @@ function BlogView() {
 
         document.getElementById("article-detail").innerHTML = markup;
 
-        // transition to the article
+        // transition to the detail "page"
         var page = document.getElementById("detail-page");
-
         bc.ui.forwardPage(page);
-
         bc.ui.refreshScrollers();
     };
 
@@ -111,6 +120,26 @@ function BlogView() {
         }
 
         return null;
+    };
+
+    // start content session
+    var startContentSession = function (article) {
+        contentSessionId = article.guid;
+
+        bc.metrics.startContentSession(contentSessionId, article.title);
+
+        console.log("Start content session: " + contentSessionId);
+    };
+
+    // end content session
+    var endContentSession = function () {
+        if (contentSessionId) {
+            bc.metrics.endContentSession(contentSessionId);
+
+            console.log("End content session: " + contentSessionId);
+        }
+
+        contentSessionId = null;
     };
 
     // show the "loading" message
