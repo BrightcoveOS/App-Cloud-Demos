@@ -1,10 +1,11 @@
 /*
  * Create a square thumbnail image, given the image url, original 
- * dimensions (width, height) and a target size (t).
+ * dimensions (width, height) and a target size (t). Note use of
+ * backticks when using variables on the right side of the pipe.
  *
  * Example:
  *
- * {{img_url|crop>`img_w`>`img_h`>75>75}}
+ * {{img_url|crop>`img_w`>`img_h`>75}}
  */
 Mark.pipes.thumb = function (url, width, height, t) {
     var m = Math.min(+width, +height);
