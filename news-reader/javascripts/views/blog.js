@@ -39,8 +39,8 @@ function BlogView() {
             endContentSession();
         });
 
-        // listen for a viewfocus
-        $(bc).bind("viewfocus", function (evt) {
+        // listen for a viewblur
+        $(bc).bind("viewblur", function (evt) {
             endContentSession();
         });
 
