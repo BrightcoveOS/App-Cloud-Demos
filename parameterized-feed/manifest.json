@@ -1,0 +1,35 @@
+{
+    "description": "Parameterized Feed Example",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "name": "weather",
+    "views": [
+        {
+            "navigationTitle": "forecast",
+            "navigationIcon": "images/icons/forecast.png",
+            "uri": "./html/forecast.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/forecast.txt",
+            "data": [
+                {
+                    "name": "weather",
+                    "contentFeed": "4eb728401e50492d9100add3",
+                    "type": "feed"
+                }
+            ],
+            "settings": [],
+            "styles": []
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+===== forecast-template
+<ul class="results">
+    {{days}}
+        <li>
+            <img src="http://www.google.com/{{icon_data}}" width="40" height="40" />
+            <h2>{{day_of_week_data}}</h2>
+            <div class="conditions">{{condition_data}}</div>
+            <div class="high-low">
+                High: <strong>{{high_data}}</strong>,
+                Low: <strong>{{low_data}}</strong>
+            </div>
+        </li>
+    {{/days}}
+</ul>

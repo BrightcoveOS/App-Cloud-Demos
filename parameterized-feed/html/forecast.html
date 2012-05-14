@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="bc-manifest" content="../manifest.json" />
+
+    <title>Weather</title>
+
+    <link rel="stylesheet" href="../stylesheets/theme-1.9.3.css" />
+    <link rel="stylesheet" href="../stylesheets/Forecast.css" />
+
+    <script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.9.3.js"></script>
+    <script type="text/javascript" src="../javascripts/views/Forecast.js"></script> 
+
+    <script>
+        var view = new WeatherView();
+    
+        $(bc).bind("init", function () {
+            view.loadWeather("90210");
+        });
+    </script>
+</head>
+
+<body>
+    <select onchange="view.loadWeather(this.value)">
+        <option value="90210">Beverly Hills</option>
+        <option value="02210">Boston</option>
+        <option value="20815">Bethesda</option>
+        <option value="33432">Boca Raton</option>
+        <option value="70801">Baton Rouge</option>
+    </select>
+
+    <h1>Four-day Forecast</h1>
+
+    <div id="forecast">
+        <!-- wait for it ... -->
+    </div>
+</body>
+
+</html>

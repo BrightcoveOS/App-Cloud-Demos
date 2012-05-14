@@ -29,3 +29,6 @@ a list of saved articles.
 
 * **news-reader:** Demonstrates how to create a simple news view from an RSS 
 feed.
+
+* **parameterized-feed:** Demonstrates how to create a parameterized content
+feed using a weather API.

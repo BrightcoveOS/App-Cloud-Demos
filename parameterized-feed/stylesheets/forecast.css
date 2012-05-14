@@ -1,0 +1,29 @@
+body {
+    background-color: #EEE;
+}
+
+h1 {
+    margin: 10px;
+}
+
+select {
+    float: right;
+    margin: 10px;
+    font-size: 150%;
+}
+
+ul.results {
+    list-style-type: none;
+}
+
+ul.results li {
+    padding: 15px;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #FFF;
+}
+
+ul.results img {
+    float: left;
+    margin: 10px;
+    border: 1px solid #333;
+}
