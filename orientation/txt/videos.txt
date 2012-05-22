@@ -1,10 +1,10 @@
-===== playlist
+===== video-grid-template
 <ul id="tech-results" class="results">
     {{playlists}}
         {{videos}}
             <li data-result-type="tech" data-result-id="{{id}}">
                 <div class="thumbnail">
-                    <img src="{{thumbnailURL}}" width="120" height="73" class="framed"/>
+                    <img src="{{thumbnailURL}}" width="120" height="73" />
                 </div>
                 <div class="content">
                     <h2>{{name|chop>100}}</h2>

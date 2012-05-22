@@ -16,6 +16,7 @@
             "navigationTitle": "Videos",
             "navigationIcon": "images/icons/videos.png",
             "uri": "html/videos.html",
+            "markup": "txt/videos.txt",
             "settings": [],
             "styles": [],
             "data": [

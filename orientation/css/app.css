@@ -82,6 +82,7 @@ h1 {
     font-size: 85%;
     padding: 3px 6px;
     z-index: 1000;
+    opacity: 0;
     -webkit-transition: opacity 250ms linear;
 }
 
