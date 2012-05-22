@@ -1,6 +1,6 @@
 # Internationalization (i18n)
 
-This template demonstrates how to externalize language strings in the UI layer
+This template demonstrates how to externalize language strings in the HTML layer
 using [JavaScript templates](https://github.com/adammark/Markup.js), properties 
 files, and [parameterized content feeds](http://docs.brightcove.com/en/app-cloud/using-parameters-in-content-feed-urls).
 
