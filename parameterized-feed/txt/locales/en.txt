@@ -1,2 +1,0 @@
-#english translated strings
-hello_msg=Hello

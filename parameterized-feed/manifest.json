@@ -19,7 +19,6 @@
             "navigationTitle": "forecast",
             "navigationIcon": "images/icons/forecast.png",
             "uri": "./html/forecast.html",
-            "locales": "./txt/locales/en.txt",
             "markup": "./txt/markup/forecast.txt",
             "data": [
                 {
