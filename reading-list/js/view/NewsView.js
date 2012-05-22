@@ -1,16 +1,14 @@
 function NewsView() {
-    var self = this;
+
     var articles = [];
     var mode = "latest";
 
     this.init = function () {
-        self.loadTemplates("../txt/markup/news.txt", function () {
-            self.showLoading();
+        showLoading();
 
-            initListeners();
+        initListeners();
 
-            loadNews();
-        });
+        loadNews();
     };
 
     var initListeners = function () {
@@ -64,19 +62,19 @@ function NewsView() {
     };
 
     var loadNews = function () {
-        var onsuccess = function (data) {
+        var handleData = function (data) {
             articles = data;
 
             renderNews();
 
-            self.hideLoading();
+            hideLoading();
         };
 
-        var onerror = function (error) {
+        var handleError = function (error) {
             bc.device.alert(error.errorMessage || "Oops!");
         };
 
-        bc.core.getData("google-news", onsuccess, onerror);
+        bc.core.getData("google-news", handleData, handleError);
     };
 
     var renderNews = function () {
@@ -86,7 +84,7 @@ function NewsView() {
             articles[i].favorite = isFavorite(articles[i].guid);
         }
 
-        var template = self.getTemplate("articles");
+        var template = bc.templates["articles"];
         var context = { articles: articles };
         var markup = Mark.up(template, context);
 
@@ -94,7 +92,7 @@ function NewsView() {
     };
 
     var renderFavorites = function () {
-        var template = self.getTemplate("favorites");
+        var template = bc.templates["favorites"];
         var context = { favorites: getFavorites() };
         var markup = Mark.up(template, context);
 
@@ -183,6 +181,13 @@ function NewsView() {
 
         $("#clear-all-button").toggle(count > 0);
     };
-}
 
-NewsView.prototype = new View();
+    var showLoading = function () {
+        $("#loading").css("opacity", 1);
+    };
+
+    var hideLoading = function () {
+        $("#loading").css("opacity", 0);
+    };
+
+}

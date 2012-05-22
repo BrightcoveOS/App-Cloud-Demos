@@ -11,24 +11,18 @@
 <meta name="bc-manifest" content="../manifest.json" />
 
 <!-- styles -->
-<link rel="stylesheet" type="text/css" href="../css/theme-1.8.css" />
+<link rel="stylesheet" type="text/css" href="../css/theme-1.9.3.css" />
 <link rel="stylesheet" type="text/css" href="../css/app.css" />
 
 <!-- scripts -->
-<script src="../js/lib/brightcove-app-cloud-1.8.js"></script>
-<script src="../js/lib/markup.js"></script>
+<script src="../js/lib/brightcove-app-cloud-1.9.3.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/view/View.js"></script>
 <script src="../js/view/NewsView.js"></script>
 
 <script>
-var view;
-
 $(bc).bind("viewfocus", function (evt) {
-    if (!view) {
-        view = new NewsView();
-        view.init();
-    }
+    var view = new NewsView();
+    view.init();
 });
 
 bc.device.setAutoRotateDirections(["all"]);
@@ -37,6 +31,8 @@ bc.device.setAutoRotateDirections(["all"]);
 </head>
 
 <body>
+    <div id="loading" class="loading">Loading ...</div>
+
     <div id="nav">
         <button id="latest-button" class="tab on">
             Latest News
@@ -45,6 +41,7 @@ bc.device.setAutoRotateDirections(["all"]);
             Reading List (<span id="reading-list-count">0</span>)
         </button>
     </div>
+
     <div id="content">
         <div id="results">
             <!-- wait for it -->

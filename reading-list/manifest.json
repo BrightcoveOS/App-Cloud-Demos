@@ -11,8 +11,9 @@
             "navigationTitle": "News",
             "navigationIcon": "images/icons/news.png",
             "uri": "html/news.html",
-            "settings": [ ],
-            "styles": [ ],
+            "markup": "txt/markup/news.txt",
+            "settings": [],
+            "styles": [],
             "data": [
                 {
                     "name": "google-news",
