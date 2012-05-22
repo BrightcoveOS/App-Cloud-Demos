@@ -1,29 +1,36 @@
 body {
-    background-color: #EEE;
+}
+
+#content {
+    padding: 10px;
 }
 
 h1 {
-    margin: 10px;
+    font-size: 175%;
+}
+
+h2 {
+    font-size: 125%;
 }
 
 select {
     float: right;
     margin: 10px;
-    font-size: 150%;
 }
 
 ul.results {
-    list-style-type: none;
+    list-style: none;
+    margin: 0;
 }
 
 ul.results li {
-    padding: 15px;
-    border-bottom: 1px solid #CCC;
-    border-top: 1px solid #FFF;
+    background-color: #EEE;
+    padding: 6px 10px;
+    margin: 10px 0;
 }
 
 ul.results img {
     float: left;
-    margin: 10px;
+    margin-right: 8px;
     border: 1px solid #333;
 }
