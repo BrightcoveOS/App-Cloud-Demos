@@ -17,9 +17,8 @@ from [App Cloud Studio](https://appcloud.brightcove.com/).
 
 ## Demos
 
-* **i18n:** Demonstrates multi-language support at the HTML/JS layer using a
-JavaScript templating system, properties files, and parameterized content
-feeds.
+* **i18n:** Demonstrates multi-language support at the HTML/JS layer using 
+JavaScript templates, properties files, and parameterized content feeds.
 
 * **orientation:** Demonstrates how to alter a layout when switching between 
 landscape and portrait modes using CSS3 Media Queries and Flexible Box Model.

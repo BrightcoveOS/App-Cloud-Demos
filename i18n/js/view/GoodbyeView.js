@@ -1,17 +1,14 @@
 function GoodbyeView() {
-    var self = this;
+    var LANG = "en";
 
     this.init = function () {
-        self._init("../txt/markup/goodbye.txt", render);
-    };
+        Mark.globals.lang = LANG;
 
-    var render = function () {
-        var template = self.getTemplate("goodbye-intro");
+        var template = bc.templates["goodbye-intro"];
         var context = { user: { first: "John" } };
         var markup = Mark.up(template, context);
 
         $("#intro").html(markup);
     };
-}
 
-GoodbyeView.prototype = new View();
+}

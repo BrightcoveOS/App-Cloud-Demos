@@ -1,19 +1,15 @@
 function HelloView() {
-    var self = this;
+    var LANG = "en";
 
     this.init = function () {
-        self._init("../txt/markup/hello.txt", render);
-    };
-
-    var render = function () {
-        self.showLoading();
+        showLoading();
 
         renderIntro();
         renderNews();
     };
 
     var renderIntro = function () {
-        var template = self.getTemplate("hello-intro");
+        var template = bc.templates["hello-intro"];
         var context = { user: { first: "John" } };
         var markup = Mark.up(template, context);
 
@@ -21,26 +17,32 @@ function HelloView() {
     };
 
     var renderNews = function () {
-        var onsuccess = function (data) {
-            var template = self.getTemplate("hello-news");
+        var handleData = function (data) {
+            var template = bc.templates["hello-news"];
             var context = { results: data };
             var markup = Mark.up(template, context);
 
             $("#results").html(markup);
 
-            self.hideLoading();
+            hideLoading();
         };
 
-        var onerror = function (error) {
-            bc.device.alert(self.getErrorMessage(error.errorCode));
+        var handleError = function (error) {
+            console.log(error);
         };
 
         var options = {
-            parameterizedFeedValues: { "lang": self.getLanguage() }
+            parameterizedFeedValues: { "lang": LANG }
         };
 
-        bc.core.getData("google-news", onsuccess, onerror, options);
+        bc.core.getData("google-news", handleData, handleError, options);
+    };
+
+    var showLoading = function () {
+        document.getElementById("loading").style.opacity = 1;
+    };
+
+    var hideLoading = function () {
+        document.getElementById("loading").style.opacity = 0;
     };
 }
-
-HelloView.prototype = new View();

@@ -11,8 +11,10 @@
             "navigationTitle": "Hello",
             "navigationIcon": "images/icons/hello.png",
             "uri": "html/hello.html",
-            "settings": [ ],
-            "styles": [ ],
+            "locales": "./txt/lang/en.txt",
+            "markup": "./txt/markup/hello.txt",
+            "settings": [],
+            "styles": [],
             "data": [
                 {
                     "name": "google-news",
@@ -25,9 +27,11 @@
             "navigationTitle": "Goodbye",
             "navigationIcon": "images/icons/goodbye.png",
             "uri": "html/goodbye.html",
-            "settings": [ ],
-            "styles": [ ],
-            "data": [ ]
+            "locales": "./txt/lang/en.txt",
+            "markup": "./txt/markup/goodbye.txt",
+            "settings": [],
+            "styles": [],
+            "data": []
         }
     ]
 }
