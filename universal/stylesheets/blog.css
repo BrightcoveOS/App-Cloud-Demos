@@ -1,0 +1,50 @@
+/*
+ * Phone styles
+ */
+#phone-index header {
+    border: 2px solid purple;
+    text-align: left;
+    padding: 10px;
+    font-size: 75%;
+}
+
+#phone-index li {
+    border: 2px solid orange;
+    min-height: 50px;
+    margin: 10px;
+}
+
+@media all and (orientation: landscape) {
+    #phone-index header {
+        display: none;
+    }
+}
+
+/*
+ * Tablet styles
+ */
+#tablet-index header {
+    border: 2px solid green;
+    text-align: center;
+    padding: 10px;
+}
+
+@media all and (orientation: landscape) {
+    #tablet-index li {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        height: 200px;
+        border: 2px solid red;
+        margin: 10px;
+    }
+}
+
+@media all and (orientation: portrait) {
+    #tablet-index li {
+        width: auto;
+        height: 100px;
+        border: 2px solid red;
+        margin: 10px;
+    }
+}

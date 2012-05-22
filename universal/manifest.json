@@ -1,0 +1,36 @@
+{
+    "name": "Universal app demo",
+    "description": "The ultimate template",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android Phone",
+        "iPad",
+        "Android Tablet"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Blog",
+            "navigationIcon": "images/icons/blog.png",
+            "uri": "html/blog.html",
+            "markup": "txt/markup/blog.txt",
+            "settings": [],
+            "styles": [],
+            "data": [
+                {
+                    "name": "blog",
+                    "contentFeed": "4e85fe9acacd90355f00688d",
+                    "type": "feed"
+                }
+            ]
+        }
+    ]
+}

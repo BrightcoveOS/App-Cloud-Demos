@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Blog</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1, maximum-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- styles -->
+<link rel="stylesheet" type="text/css" href="../stylesheets/theme-1.9.3.css" />
+<link rel="stylesheet" type="text/css" href="../stylesheets/app.css" />
+<link rel="stylesheet" type="text/css" href="../stylesheets/blog.css" />
+
+<!-- scripts -->
+<script src="../javascripts/lib/brightcove-app-cloud-1.9.3.js"></script>
+<script src="../javascripts/app.js"></script>
+<script src="../javascripts/views/blog.js"></script>
+
+<script>
+bc.device.setAutoRotateDirections(["all"]);
+
+$(bc).bind("init", function (evt) {
+    var view = BlogView.factory();
+    view.init();
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="loading" class="loading">Loading ...</div>
+
+<div id="blog-results">
+    <!-- wait for it -->
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+===== phone-index
+<div id="phone-index">
+    <header>
+        <h1>Phone Blog</h1>
+    </header>
+
+    <ul class="results">
+        {{articles}}
+            <li>{{title}}</li>
+        {{/articles}}
+    </ul>
+</div>
+
+===== tablet-index
+<div id="tablet-index">
+    <header>
+        <h1>Tablet Blog</h1>
+    </header>
+
+    <ul class="results">
+        {{articles}}
+            <li>{{title}}</li>
+        {{/articles}}
+    </ul>
+</div>
