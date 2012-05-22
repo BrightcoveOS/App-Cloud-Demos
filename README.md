@@ -31,3 +31,6 @@ feed.
 
 * **parameterized-feed:** Demonstrates how to create a parameterized content
 feed using a weather API.
+
+* **universal:** Demonstrates one way to implement a "universal" app that 
+works across phones and tablets.
