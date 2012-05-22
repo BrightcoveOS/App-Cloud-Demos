@@ -6,6 +6,14 @@
         "iPhone",
         "Android"
     ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
     "views": [
         {
             "navigationTitle": "News",
