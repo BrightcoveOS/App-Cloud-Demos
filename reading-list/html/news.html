@@ -20,12 +20,12 @@
 <script src="../javascripts/views/news.js"></script>
 
 <script>
-$(bc).bind("viewfocus", function (evt) {
+bc.device.setAutoRotateDirections(["all"]);
+
+$(bc).bind("init", function (evt) {
     var view = new NewsView();
     view.init();
 });
-
-bc.device.setAutoRotateDirections(["all"]);
 </script>
 
 </head>
