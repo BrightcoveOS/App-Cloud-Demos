@@ -21,6 +21,8 @@
 <script src="../javascripts/views/map.js"></script>
 
 <script>
+bc.device.setAutoRotateDirections(["all"]);
+
 $(bc).bind("init", function (evt) {
     var view = new MapView();
     view.init();
