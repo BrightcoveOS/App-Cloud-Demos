@@ -1,0 +1,29 @@
+{
+    "name": "Geolocation demo",
+    "description": "Using Google Maps with App Cloud",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "iPad",
+        "Android Phone",
+        "Android Tablet"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Map",
+            "navigationIcon": "images/icons/map.png",
+            "uri": "html/map.html",
+            "settings": [],
+            "styles": [],
+            "data": []
+        }
+    ]
+}

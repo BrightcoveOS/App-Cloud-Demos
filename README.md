@@ -34,3 +34,6 @@ feed using a weather API.
 
 * **universal:** Demonstrates one way to implement a "universal" app that 
 works across phones and tablets.
+
+* **geolocation:** Demonstrates how to access the user's current position and
+plot it on a map.
