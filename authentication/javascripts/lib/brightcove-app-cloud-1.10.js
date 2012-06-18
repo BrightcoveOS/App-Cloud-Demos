@@ -1293,6 +1293,7 @@ $( "body" ).html( html );</pre>
       return;
     }
     bc.context.initialized = true;
+    bc.device.setViewIsReady();
     $( bc ).trigger( "init" );
     bc.core.triggerViewFocusInDevelopmentMode();
   }
@@ -1411,7 +1412,8 @@ $( "body" ).html( html );</pre>
   
   /**
    * The <code>downloadcomplete</code> event is dispatched by the container if the download finishes successfully, as the request 
-   * moves into the "complete" state. The payload to this event is an object with the following properties:
+   * moves into the "complete" state. The payload to this event is an object containing a single property, "info", whose
+   * value is an object with the following properties:
    *
    <ul>
     <li>downloadID (String) The unique ID for this download that was passed into the <code>bc.device.requestDownload</code> API</li>
@@ -1438,22 +1440,18 @@ $( "body" ).html( html );</pre>
   
   /**
    * The <code>downloaderror</code> event is dispatched by the container if there is an error downloading the requested resource.  The 
-   * payload to this event is an object with the following properties:
+   * payload to this event is an object containing a single property, "info", whose value is an object with the following properties:
    <ul>
     <li>downloadID (String) The unique ID for this download that was passed into the <code>bc.device.requestDownload</code> API</li>
     <li>resource (String) The URL that was passed into the <code>bc.device.requestDownload</code> API</li>
     <li>state (String) The current state of the download request. For this event it will always be "errored".</li>
-    <li>size (Number) The file size of the downloaded data in bytes.  For this event it will always be null.</li>
-    <li>fileURI (String) The path to the file on disk.  For this event it will always be null</li>
-    <li>errorCode (Number) The errorCode for this error.  Possible values can be found on the <code>bc.device.codes</code> object.</li>
-    <li>errorMessage (String) A human readable error message.</li>
    </ul>
    *
    * @example
    $( bc ).on( "downloaderror", handleDownloadError );
    
    function handleDownloadError( evt, error ) {
-     console.error( "There was an error of:" + error.errorMessage " downloading " + error.resource );
+     console.error( "There was an error downloading " + error.resource );
    }
    
    * @name downloaderror
@@ -1814,7 +1812,8 @@ $( "body" ).html( html );</pre>
     }
   });
   
-} )( bc.lib.jQuery );/*global bc:true atob:false*/
+} )( bc.lib.jQuery );
+/*global bc:true atob:false*/
 /*jshint indent:2, browser: true, white: false devel:true undef:false*/
 
 /**
@@ -2372,6 +2371,20 @@ bc.device.externalscreen = {};
  * @param event (type of externalscreendisconnected)    
  */
 
+/**
+ * The <code>modalwebbrowserclosed</code> event is fired anytime the modal web browser window is closed.
+ *
+ * @example
+ * $( bc ).on( "modalwebbrowserclosed", function( evt ) {
+ *    bc.device.alert("The modal web browser was closed.", successHandler, errorHandler);
+ * });
+ *
+ * @name modalwebbrowserclosed
+ * @event
+ * @memberOf bc
+ * @param event (type of modalwebbrowserclosed)    
+ */
+
   $( document ).ready( function() {
     //We need to inject an iFrame into the page in order to flag the container that we have commands to pull
     createIframeBridge();
@@ -2442,11 +2455,6 @@ bc.device.externalscreen = {};
   /*****************************************
    * Event registration
    ****************************************/
-
-  $( bc ).on( "init", function() {
-    createNativeCall( undefined, undefined, "SetViewIsReady", { version: bc.context.version } );
-    bc.device.registerListeners();
-  });
   
   $( bc ).on( "viewfocus", function() {
     _enqueueCommands = true;
@@ -2514,7 +2522,7 @@ bc.device.externalscreen = {};
         bc.device.navigateToView( hrefNoHash,
                                   null, 
                                   null, 
-                                  window.location.hash );
+                                  { fragmentID: window.location.hash } );
       }
     });
   };
@@ -2540,6 +2548,15 @@ bc.device.externalscreen = {};
     } else {
       return bc.device.setIsNative();      
     }
+  };
+  
+  /**
+   * Tells the container that it is now safe to communicate with the view.
+   * @private
+   */
+  bc.device.setViewIsReady = function() {
+    createNativeCall( undefined, undefined, "SetViewIsReady", { version: bc.context.version } );
+    bc.device.registerListeners();
   };
   
   /**
@@ -3078,6 +3095,53 @@ bc.device.externalscreen = {};
     }
 
     createNativeCall( successCallback, errorCallback, "RemoveDownload", { downloadID: downloadID } );
+  };
+
+ 
+  /**
+   * Opens the URI in the native application of the device if it supports that URI.  For example a URI of http://www.google.com would switch to the safari
+   * browser and an open up to http://www.google.com, where as a URI of mailto:john@example.com would open the native mail client.  By default App Cloud opens
+   * any a href link in a modal window, however, if you would like to programmatically control the opening of a modal window you can do so by passing in a value of true
+   * for the modalWebBrowser property.  The container will call the success callback once it successfully passes the URI to the device to handle or has opened the modal window, if modalWebBrowser is set to true.
+   * The error callback if the native device is unable to do anything with the URI that is passed in.  For example <code>bc.device.openURI( "badrequest", success, error )</code> would call the error callback
+   * because the device would not know how to handle a URI of "badrequest".
+   *
+   * @param uri Is a required parameter, which is the URI that should be opened.  This can be any URI that the device knows how to open, for example http://, https:// or mailto:
+   * @param successCallback The function that will be called once the modal window is opened or the device has opened the URI in the native application, for example Safari on iOS.
+   * @param errorCallback The function that will be called if there is an error opening the URI on the device.  The error object will have a property of errorCode and errorMessage.
+   * @param options An object that currently supports one property of "modalWebBrowser" that expects a boolean value.  This defaults to false.
+   * @example
+   function success() {
+     //Opened the URI successfully.
+   }
+   
+   function error( error ) {
+     console.log( "There was an error opening the URI with error code: " + error.errorCode + " and an error message of: " + error.errorMessage );
+   }
+   
+   bc.device.openURI( "http://www.brightcove.com", success, error, { modalWebBrowser: false } );
+   */
+  bc.device.openURI = function( uri, successCallback, errorCallback, options ) {
+    var settings = {
+      modalWebBrowser: false
+    };
+    
+    if( uri === undefined ) {
+      callErrorCallback( errorCallback, bc.device.codes.MISSING_REQUIRED_PARAMETER, "The URI to open is a required parameter for the openURI API." );
+      return;
+    }
+    
+    if( !bc.context.isNative ) {
+      window.open( uri );
+      if( typeof successCallback === "function" ) {
+        successCallback();
+      }
+      return;
+    }
+    
+    $.extend( settings, options );
+    settings.uri = uri;
+    createNativeCall( successCallback, errorCallback, "OpenURI", settings);
   };
  
  /**
