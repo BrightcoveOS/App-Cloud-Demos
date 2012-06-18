@@ -37,3 +37,6 @@ works across phones and tablets.
 
 * **geolocation:** Demonstrates how to access the user's current position and
 plot it on a map.
+
+* **authentication:** Demonstrates one way to implement authentication and 
+authorization via a REST API.
