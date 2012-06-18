@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Home</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/home.css" />
+
+<!-- brightcove script -->
+<script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.10.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="../javascripts/views/home.js"></script> 
+<script>
+var view;
+
+// initialize the view when bc is ready
+$(bc).bind("init", function () {
+    view = new HomeView();
+    view.init();
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="loading" class="loading">Loading ...</div>
+
+<div class="page">
+    <div id="ribbon">
+        <button id="logout-button">Log Out</button>
+    </div>
+
+    <div class="scroller" id="content-scroll">
+        <div id="content">
+            <!-- wait for it ... -->
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

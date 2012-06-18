@@ -1,0 +1,23 @@
+===== login-template
+<div id="login">
+    <h1>Hiya.</h1>
+
+    <div id="warning"></div>
+
+    <!-- return false. do not actually submit the form -->
+    <form onsubmit="view.login(); return false">
+        <!-- note "autocorrect" and "autocapitalize" attributes -->
+        <input type="text" id="username" value="{{username}}" maxlength="255" autocorrect="off" autocapitalize="off"><br>
+
+        <input type="password" id="password" value="" maxlength="255"><br>
+
+        <button id="login-button">Log In</button>
+    </form>
+</div>
+
+===== results-template
+<ul class="results">
+    {{results}}
+        <li>{{name|upcase}} ({{type}})</li>
+    {{/results}}
+</ul>

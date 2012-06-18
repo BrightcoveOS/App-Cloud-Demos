@@ -1,0 +1,25 @@
+{
+    "name": "Auth Demo",
+    "description": "Authentication and authorization demo",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": false
+        },
+        "iOS": {
+            "nativeNavigation": false
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "home",
+            "navigationIcon": "images/icons/home.png",
+            "uri": "./html/home.html",
+            "markup": "./txt/markup/home.txt"
+        }
+    ]
+}
