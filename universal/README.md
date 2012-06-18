@@ -3,9 +3,11 @@
 This template demonstrates one way to implement a "universal" app that 
 works across phones and tablets.
 
-## Core concepts:
+## Core concepts
 
-* CSS3 [Media Queries](http://css-tricks.com/css-media-queries/)
-* Form factor detection
-* Prototypical inheritance
-* Factory pattern
+* Using CSS3 [Media Queries](http://css-tricks.com/css-media-queries/) to 
+change the presentation when switching between portrait and landscape modes
+* Detecting the form factor ("phone" or "tablet")
+* Instantiating a JavaScript object ("PhoneBlogView" or "TabletBlogView")
+using a factory pattern
+* Extending object functionality with prototypical inheritance
