@@ -1,0 +1,15 @@
+body {
+    background-color: #DDD;
+    -webkit-user-select: none;
+}
+
+header {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+#gallery img {
+    margin: 10px;
+}

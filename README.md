@@ -40,3 +40,6 @@ plot it on a map.
 
 * **authentication:** Demonstrates one way to implement authentication and 
 authorization via a REST API.
+
+* **progressive-images:** Demonstrates how to progressively load images as 
+they come into the geometry of a given DOM element.

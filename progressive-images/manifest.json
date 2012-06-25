@@ -1,0 +1,25 @@
+{
+    "name": "Cat Gallery",
+    "description": "Progressive Image Loading Demo",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": false
+        },
+        "iOS": {
+            "nativeNavigation": false
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Gallery",
+            "navigationIcon": "images/icons/gallery.png",
+            "uri": "./html/gallery.html",
+            "markup": "./txt/markup/gallery.txt"
+        }
+    ]
+}

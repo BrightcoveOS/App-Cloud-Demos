@@ -1,0 +1,9 @@
+/*
+ * This optional CSS provides a fade-in effect. Removing it may improve performance.
+ */
+
+img[data-src] {
+    opacity: .15;
+    -webkit-transition: opacity 200ms linear;
+    -webkit-transform: translate3d(0, 0, 0);
+}

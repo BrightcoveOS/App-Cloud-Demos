@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Gallery</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/gallery.css" />
+<link rel="stylesheet" href="../stylesheets/progressive.css" />
+
+<!-- brightcove script -->
+<script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.10.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="../javascripts/lib/progressive.js"></script>
+<script type="text/javascript" src="../javascripts/views/gallery.js"></script> 
+<script>
+var view;
+
+// initialize the view when bc is ready
+$(bc).bind("init", function () {
+    view = new GalleryView();
+    view.init();
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <header>
+        <h1>Awwwww</h1>
+    </header>
+
+    <div id="grid-container" class="scroller">
+        <div id="grid">
+            <!-- wait for it -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
