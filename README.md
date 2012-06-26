@@ -42,4 +42,4 @@ plot it on a map.
 authorization via a REST API.
 
 * **progressive-images:** Demonstrates how to progressively load images as 
-they come into the geometry of a given DOM element.
+they come into view.

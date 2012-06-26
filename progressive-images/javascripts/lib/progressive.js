@@ -8,6 +8,10 @@
  *
  * <img src="placeholder.png" width="100" height="100" data-src="http://example.com/img.jpg"/>
  *
+ * Then simply run:
+ *
+ * new ProgressiveLoader("elementId");
+ *
  */
 function ProgressiveLoader(elementId) {
 
