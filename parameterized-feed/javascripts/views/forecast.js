@@ -1,4 +1,4 @@
-var WeatherView = function () {
+function WeatherView() {
 
     this.loadWeather = function (zip) {
         var options = {
