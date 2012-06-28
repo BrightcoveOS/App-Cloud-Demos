@@ -5,7 +5,7 @@
  *
  * Example:
  *
- * {{img_url|crop>`img_w`>`img_h`>75}}
+ * {{img_url|thumb>`img_w`>`img_h`>75}}
  */
 Mark.pipes.thumb = function (url, width, height, t) {
     var m = Math.min(+width, +height);
