@@ -1,4 +1,4 @@
-header h1 {
+.header h1 {
     color: white;
 }
 
@@ -7,6 +7,7 @@ ul.articles li {
     border-bottom: 1px solid #CCC;
     padding: 15px 10px;
     display: -webkit-box;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 ul.articles li .thumbnail {
@@ -24,7 +25,7 @@ ul.articles li .date {
 }
 
 small {
-    background-color: #EEE;
+    background-color: #CCC;
     padding: 3px 8px;
     border-radius: 25px;
     color: #666;
@@ -53,7 +54,7 @@ article .image-area {
 }
 
 article img {
-    border: 4px solid black;
+    border: 1px solid #CCC;
 }
 
 .loading {
