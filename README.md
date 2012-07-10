@@ -44,5 +44,5 @@ authorization via a REST API.
 * **progressive-images:** Demonstrates how to progressively load images as 
 they come into view.
 
-* **file-download:** Demonstrates how to save, retrieve and delete files
-on disk using `bc.device.requestDownload()` and associated methods.
+* **file-download:** Demonstrates how to download, retrieve and delete files
+on disk using `bc.device.requestDownload()` and associated methods and events.

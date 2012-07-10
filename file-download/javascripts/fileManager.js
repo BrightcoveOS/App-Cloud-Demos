@@ -47,13 +47,20 @@ id (of file), url, size, path, date, and metadata (an object)
 
 
 Download a file from a URL, specifying an ID (a string), optional metadata 
-(an object), and optional progress interval (defaults to 5):
+(an object), and optional progress interval (defaults to 5%):
 
-    fm.downloadFile("http://cats.com/kitty1.jpg", "kitty1", { "title": "Here kitty" }, 5);
+    var metadata = {
+        "title": "Here kitty",
+        "subject": "Mrs. Meowington"
+    };
+
+    fm.downloadFile("http://cats.com/kitty1.jpg", "kitty1", metadata, 5);
 
 
 Retrieving a file
 -----------------
+
+Retrieve a file in the "cat-pics" namespace:
 
     var file = fm.getFile("kitty1");
 
@@ -62,6 +69,8 @@ Retrieving a file
 
 Retrieving all files
 --------------------
+
+Retrieve all files in the "cat-pics" namespace:
 
     var files = fm.getFiles();
 
@@ -89,17 +98,17 @@ contains errorCode and errorMessage:
     });
 
 
-Delete one file in this namespace:
+Delete one file in the "cat-pics" namespace:
 
     fm.deleteFile("kitty1");
 
 
-Delete multiple files in this namespace:
+Delete multiple files in the "cat-pics" namespace:
 
     fm.deleteFiles(["kitty1", "kitty2"]);
 
 
-Delete all files in this namespace:
+Delete all files in the "cat-pics" namespace:
 
     fm.deleteAll();
 
