@@ -63,7 +63,7 @@ Download a file from a URL, specifying an ID (a string), optional metadata
 ``` javascript
 var metadata = {
     "title": "Here kitty",
-    "subject": "Mrs. Meowington"
+    "author": "Mrs. Meowington"
 };
 
 fm.downloadFile("http://cats.com/kitty1.jpg", "kitty1", metadata, 5);
