@@ -1,0 +1,49 @@
+{
+    "name": "Analog Devices",
+    "description": "Demo",
+    "version": "1.0",
+    "devices": [
+        "iPad",
+        "Android Tablet"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Home",
+            "navigationIcon": "images/icons/home.png",
+            "uri": "./html/home.html"
+        },
+        {
+            "navigationTitle": "Videos",
+            "navigationIcon": "images/icons/videos.png",
+            "uri": "./html/videos.html",
+            "markup": "./txt/markup/videos.txt",
+            "data": [
+                {
+                    "name": "videos",
+                    "contentConnector": "4ff740e4ec8e602c9b036d65",
+                    "type": "video_cloud"
+                }
+            ]
+        },
+        {
+            "navigationTitle": "Documents",
+            "navigationIcon": "images/icons/docs.png",
+            "uri": "./html/docs.html",
+            "markup": "./txt/markup/docs.txt"
+        },
+        {
+            "navigationTitle": "Briefcase",
+            "navigationIcon": "images/icons/briefcase.png",
+            "uri": "./html/briefcase.html",
+            "markup": "./txt/markup/briefcase.txt"
+        }
+    ]
+}

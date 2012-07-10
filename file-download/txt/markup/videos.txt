@@ -1,0 +1,75 @@
+===== video-subhead
+<button class="back-btn">
+    <i class="icon-circle-arrow-left icon-large"></i> Back
+</button>
+
+<h1 class="subtitle">
+    {{subtitle}}
+</h1>
+
+===== video-index
+<ul class="results" id="playlists">
+    {{playlists}}
+        {{if videos|notempty}}
+            <li data-result-id="{{id}}" data-playlist-index="{{#}}">
+                <div class="thumbnail">
+                    <img src="{{videos.0.videoStillURL}}" width="200" height="125"/>
+                </div>
+                <div class="meta">
+                    <h2>{{name}}</h2>
+                    <p>{{videos|size}} {{videos|more>1|choose>videos>video}}</p>
+                </div>
+            </li>
+        {{/if}}
+    {{/playlists}}
+</ul>
+
+===== video-playlist
+<ul class="results" id="playlist">
+    {{videos}}
+        <li data-result-id="{{id}}">
+            <div class="thumbnail">
+                <img src="{{videoStillURL}}" width="200" height="125"/>
+            </div>
+            <div class="content">
+                <h2>{{name|tease>10}}</h2>
+                <p>
+                    <span class="dateline">{{creationDate|moment>MMMM D, YYYY}}</span>
+                    <span class="runtime">{{length|runtime>1000}}</span>
+                </p>
+            </div>
+        </li>
+    {{/videos}}
+</ul>
+
+===== video-detail
+<article>
+    <video controls id="player" src="" poster="{{video.videoStillURL}}" width="400" height="300"></video>
+
+    <h2>{{video.name}}</h2>
+
+    <p>
+        {{video.shortDescription}}
+    </p>
+
+    <p>
+        <span class="dateline">{{video.creationDate|moment>MMMM D, YYYY}}</span>
+        <span class="runtime">{{video.length|runtime>1000}}</span>
+    </p>
+
+    <br>
+
+    <p>
+        <button id="btn-add-{{video.id}}" class="add-btn" data-video-id="{{video.id}}" data-video-title="{{video.name}}" style="display:none">
+            <i class="icon-download icon-large"></i>
+            Add to Briefcase
+        </button>
+
+        <span id="saved-{{video.id}}" class="saved" data-video-id="{{video.id}}" style="display:none">
+            <i class="icon-briefcase icon-large"></i>
+            Saved
+        </span>
+
+        <span class="progress" id="progress-{{video.id}}"></span>
+    </p>
+</article>

@@ -1,0 +1,37 @@
+===== docs-index
+<ul class="results">
+    {{docs}}
+        <li data-doc-id="{{link}}">
+            <div class="thumbnail">
+                <img src="../images/paper.png" width="100" height="133"/>
+            </div>
+            <div class="meta">
+                <h2>{{title}}</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                consequat tax tax tax.</p>
+
+                <div class="taskbar">
+                    <button class="pdf-btn" data-doc-link="{{link}}" data-doc-id="{{id}}">
+                        <i class="icon-file icon-large"></i>
+                        View Doc
+                    </button>
+
+                    <button id="btn-add-{{id}}" style="display:{{downloaded|choose>none>inline-block}}" class="add-btn" data-doc-link="{{link}}" data-doc-id="{{id}}" data-doc-title="{{title}}">
+                        <i class="icon-download icon-large"></i>
+                        Add to Briefcase
+                    </button>
+
+                    <span id="saved-{{id}}" style="display:{{downloaded|choose>inline-block>none}}" class="saved" data-doc-id="{{id}}">
+                        <i class="icon-briefcase icon-large"></i>
+                        Saved
+                    </span>
+
+                    <span class="progress" id="progress-{{id}}"></span>
+                </div>
+            </div>
+        </li>
+    {{/docs}}
+</ul>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Analog Devices</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.2.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/app.css" />
+<link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
+<!-- brightcove script -->
+<script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.10.2.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="../javascripts/lib/moment.min.js"></script> 
+<script type="text/javascript" src="../javascripts/fileManager.js"></script> 
+<script type="text/javascript" src="../javascripts/app.js"></script> 
+<script type="text/javascript" src="../javascripts/views/home.js"></script> 
+<script>
+var view = new HomeView();
+
+$(bc).on("init", function () {
+    view.init();
+});
+
+// prevent scrolling on this page
+$(document).on("touchstart", function (evt) {
+    evt.preventDefault();
+});
+</script>
+
+</head>
+
+<body class="home">
+
+<header class="main">
+    <h1>Demo</h1>
+</header>
+
+<ul class="icons">
+    <li data-link="./html/videos.html">
+        <img src="../images/home-videos.png" width="264" height="264" alt="Training"/>
+        <h1>Videos</h1>
+    </li>
+    <li data-link="./html/docs.html">
+        <img src="../images/home-docs.png" width="264" height="264" alt="Products"/>
+        <h1>Documents</h1>
+    </li>
+    <li data-link="./html/briefcase.html">
+        <img src="../images/home-briefcase.png" width="264" height="264" alt="Briefcase"/>
+        <h1>Briefcase</h1>
+    </li>
+</ul>
+
+<div id="blurbs">
+    <p>This is a flexible messaging area. Perfect for a text content source!</p>
+</div>
+
+</body>
+</html>

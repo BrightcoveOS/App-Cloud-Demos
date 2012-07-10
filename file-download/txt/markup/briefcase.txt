@@ -1,0 +1,32 @@
+===== briefcase-index
+<article>
+    <section>
+        <h1>Docs</h1>
+        <ul class="results briefcase docs">
+            {{docs}}
+                <li data-download-id="{{id}}">
+                    <div class="meta" data-path="{{path}}">
+                        <h2>{{metadata.title}}</h2>
+                        <p><small>{{date|moment>MMMM Do h:mm a}}</small></p>
+                    </div>
+                    <i class="icon-trash icon-large" data-download-id="{{id}}"></i>
+                </li>
+            {{/docs}}
+        </ul>
+    </section>
+
+    <section>
+        <h1>Videos</h1>
+        <ul class="results briefcase videos">
+            {{videos}}
+                <li data-download-id="{{id}}">
+                    <div class="meta" data-path="{{path}}">
+                        <h2>{{metadata.title}}</h2>
+                        <p><small>{{date|moment>MMMM Do h:mm a}}</small></p>
+                    </div>
+                    <i class="icon-trash icon-large" data-download-id="{{id}}"></i>
+                </li>
+            {{/videos}}
+        </ul>
+    </section>
+</article>

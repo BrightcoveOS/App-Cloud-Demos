@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Analog Devices</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.2.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/app.css" />
+<link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
+<!-- brightcove script -->
+<script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.10.2.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="../javascripts/lib/moment.min.js"></script> 
+<script type="text/javascript" src="../javascripts/fileManager.js"></script> 
+<script type="text/javascript" src="../javascripts/app.js"></script> 
+<script type="text/javascript" src="../javascripts/views/docs.js"></script> 
+<script>
+var view = new DocsView();
+
+$(bc).on("init", function () {
+    view.init();
+
+    $(bc).on("viewfocus", function () {
+        view.refresh();
+    });
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="loading" class="loading">Loading ...</div>
+
+<div class="page" id="docs-page">
+    <header>
+        <h1 class="title">Documents</h1>
+    </header>
+
+    <div class="scroller">
+        <div id="docs-content">
+            <!-- wait for it ... -->
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
