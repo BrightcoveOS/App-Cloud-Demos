@@ -1,7 +1,8 @@
 function DocsView() {
+    // file manager for handling PDF files in the namespace "briefcase"
     var fileManager = new FileManager("briefcase");
 
-    // for demo purposes only. in a production app, store this data remotely
+    // data for demo purposes only. in a production app, store such data remotely
     var docs = [
         {
             id: "f1040",
@@ -100,6 +101,7 @@ function DocsView() {
         }
     ];
 
+    // initialize this view
     this.init = function () {
         initListeners();
 
@@ -108,12 +110,14 @@ function DocsView() {
         render("docs-content", "docs-index", { "docs": getDocs() });
     };
 
+    // refresh this view when the user enters it
     this.refresh = function () {
         fileManager.refresh();
 
         render("docs-content", "docs-index", { "docs": getDocs() });
     };
 
+    // get a list of available documents. for each, determine if downloaded
     var getDocs = function () {
         for (var i in docs) {
             docs[i].downloaded = fileManager.getFile(docs[i].id) !== undefined;
@@ -122,6 +126,7 @@ function DocsView() {
         return docs;
     };
 
+    // initialize tap handlers
     var initListeners = function () {
         $("body")
             .on("tap", ".back-btn", handleBackTap)
@@ -129,6 +134,7 @@ function DocsView() {
             .on("tap", ".add-btn", handleSaveTap);
     };
 
+    // set file manager callbacks
     var initFileManager = function () {
         fileManager.onDownloadStart(function () {
         });
@@ -163,10 +169,12 @@ function DocsView() {
         });
     };
 
+    // go back!
     var handleBackTap = function (evt) {
         bc.ui.backPage();
     }
 
+    // open a PDF, either from disk or the network, in a modal window
     var handleDocTap = function (evt) {
         var id = this.getAttribute("data-doc-id");
         var file = fileManager.getFile(id);
@@ -177,6 +185,7 @@ function DocsView() {
         bc.device.openURI(url, undefined, undefined, { modalWebBrowser: true } );
     };
 
+    // save a PDF to disk
     var handleSaveTap = function (evt) {
         var url = this.getAttribute("data-doc-link");
         var id = this.getAttribute("data-doc-id");

@@ -1,20 +1,24 @@
 function VideosView() {
+    // file manager for handling MP4 files in the namespace "briefcase"
     var fileManager = new FileManager("briefcase");
 
+    // initialize this view
     this.init = function () {
         initListeners();
 
         initFileManager();
 
-        preload();
+        preloadData();
 
         loadData();
     };
 
+    // refresh this view when the user enters it
     this.refresh = function () {
         fileManager.refresh();
     };
 
+    // initialize tap handlers
     var initListeners = function () {
         $("body")
             .on("tap", ".back-btn", handleBackTap)
@@ -25,6 +29,7 @@ function VideosView() {
         $(bc).on("viewblur", pauseVideo);
     };
 
+    // set file manager callbacks
     var initFileManager = function () {
         fileManager.onDownloadStart(function () {
         });
@@ -59,7 +64,8 @@ function VideosView() {
         });
     };
 
-    var preload = function () {
+    // preload video playlists data from cache, then render (if data exists)
+    var preloadData = function () {
         var data = bc.core.cache("videos");
 
         if (data) {
@@ -67,6 +73,7 @@ function VideosView() {
         }
     };
 
+    // load video playlist data from network
     var loadData = function () {
         showLoadingMessage();
 
@@ -74,13 +81,21 @@ function VideosView() {
     };
 
     var handleDataLoad = function (data) {
-        bc.core.cache("videos", data);
+        // old data
+        var cached = bc.core.cache("videos");
 
-        render("playlists-content", "video-index", { "playlists": data.items })
+        // compare old data to new data
+        if (JSON.stringify(cached) !== JSON.stringify(data)) {
+            // if changed, replace data in cache and re-render
+            bc.core.cache("videos", data);
+
+            render("playlists-content", "video-index", { "playlists": data.items })
+        }
 
         hideLoadingMessage();
     };
 
+    // save a video file to disk
     var handleSaveTap = function (evt) {
         var videoId = this.getAttribute("data-video-id");
         var videoTitle = this.getAttribute("data-video-title");
@@ -99,10 +114,12 @@ function VideosView() {
         $("#progress-" + videoId).html(txt);
     };
 
+    // handle data load error
     var handleDataError = function (error) {
         console.log(error);
     };
 
+    // display an individual playlist
     var handlePlaylistTap = function (evt) {
         var playlist = getPlaylist(this.getAttribute("data-result-id"))
 
@@ -112,6 +129,7 @@ function VideosView() {
         bc.ui.forwardPage($("#playlist-page"));
     };
 
+    // display an individual video
     var handleVideoTap = function (evt) {
         var video = getVideo(this.getAttribute("data-result-id"));
 
@@ -123,12 +141,14 @@ function VideosView() {
         bc.ui.forwardPage($("#video-page"));
     };
 
+    // go back!
     var handleBackTap = function (evt) {
         pauseVideo(evt);
 
         bc.ui.backPage();
     };
 
+    // pause the <video>, if exists
     var pauseVideo = function (evt) {
         var video = document.getElementById("player");
 
@@ -137,6 +157,7 @@ function VideosView() {
         }
     };
 
+    // load and play a video, either from disk or the network
     var loadVideo = function (videoId) {
         var file = fileManager.getFile(videoId);
 
@@ -148,6 +169,7 @@ function VideosView() {
         };
     };
 
+    // play a video from disk
     var playVideoFromFile = function (videoId, file) {
         var video = document.getElementById("player");
         video.src = file.path;
@@ -155,6 +177,7 @@ function VideosView() {
         $("#saved-" + videoId).show();
     };
 
+    // load a video from the network, then play it
     var playVideoFromNetwork = function (videoId) {
         showLoadingMessage();
 
@@ -177,6 +200,7 @@ function VideosView() {
         bc.device.fetchContentsOfURL(getVideoURL(videoId), handleVideoLoad, handleDataError);
     };
 
+    // get the URL of a BC video file (using Brightcove Media API)
     var getVideoURL = function (videoId) {
         return "http://api.brightcove.com/services/library"
             + "?command=find_video_by_id"
@@ -186,6 +210,7 @@ function VideosView() {
             + "&video_id=" + videoId;
     };
 
+    // get individual playlist data from cache
     var getPlaylist = function (playlistId) {
         var data = bc.core.cache("videos");
 
@@ -198,6 +223,7 @@ function VideosView() {
         return {};
     };
 
+    // get individual video data from cache
     var getVideo = function (videoId) {
         var data = bc.core.cache("videos");
 
