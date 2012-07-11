@@ -1,11 +1,11 @@
 function HelloView() {
-    var LANG = "en";
 
     this.init = function () {
         showLoading();
 
         renderIntro();
-        renderNews();
+
+        loadNews();
     };
 
     var renderIntro = function () {
@@ -13,29 +13,33 @@ function HelloView() {
         var context = { user: { first: "John" } };
         var markup = Mark.up(template, context);
 
-        $("#intro").html(markup);
+        document.getElementById("intro").innerHTML = markup;
     };
 
-    var renderNews = function () {
-        var handleData = function (data) {
-            var template = bc.templates["hello-news"];
-            var context = { results: data };
-            var markup = Mark.up(template, context);
-
-            $("#results").html(markup);
-
-            hideLoading();
-        };
-
-        var handleError = function (error) {
-            console.log(error);
-        };
-
+    var loadNews = function () {
         var options = {
             parameterizedFeedValues: { "lang": LANG }
         };
 
         bc.core.getData("google-news", handleData, handleError, options);
+    };
+
+    var handleData = function (data) {
+        renderNews(data);
+
+        hideLoading();
+    };
+
+    var handleError = function (error) {
+        console.log(error);
+    };
+
+    var renderNews = function (data) {
+        var template = bc.templates["hello-news"];
+        var context = { results: data };
+        var markup = Mark.up(template, context);
+
+        document.getElementById("results").innerHTML = markup;
     };
 
     var showLoading = function () {
