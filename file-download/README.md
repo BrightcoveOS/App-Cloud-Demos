@@ -8,7 +8,7 @@ on `bc.core.cache()` to store arbitrary metadata associated with each file.
 This implementation is not authoritative, nor is it meant to demonstrate how
 to create a fully offline application.
 
-### Initializing the FileManager object
+### Instantiating the FileManager object
 
 Create a FileManager instance for the namespace "cat-pics":
 
