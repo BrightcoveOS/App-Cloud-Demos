@@ -2,7 +2,7 @@
 
 This template demonstrates how to download, retrieve and delete files on disk 
 using `bc.device.requestDownload()` and associated methods and events. These 
-methods and events are abstracted in the `FileManager` object, which relies
+methods and events are abstracted in the `FileManager` function, which relies
 on `bc.core.cache()` to store arbitrary metadata associated with each file.
 
 This implementation is not authoritative, nor is it meant to demonstrate how
@@ -129,3 +129,11 @@ Delete all files in the "cat-pics" namespace:
 fm.deleteAll();
 ```
 
+## Notes on video loading and playback
+
+This template loads MP4 video files via the [Brightcove Media API][1], then
+injects them into a `<video>` element. It does not use the [Brightcove Smart
+Player][2] or any other wrapper code to provide analytics, advertising, etc.
+
+[1]: http://docs.brightcove.com/en/media/
+[2]: http://support.brightcove.com/en/docs/delivering-video-html5-and-smart-players
