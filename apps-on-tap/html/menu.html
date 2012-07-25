@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Apps on Tap</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.2.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/app.css" />
+<link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
+<!-- brightcove script -->
+<script src="../javascripts/lib/brightcove-app-cloud-1.10.2.js"></script>
+
+<!-- custom scripts -->
+<script src="../javascripts/app.js"></script> 
+<script src="../javascripts/pipes.js"></script> 
+<script src="../javascripts/views/menu.js"></script> 
+<script>
+var view = new MenuView();
+
+$(bc).on("viewfocus", function () {
+    if (!view.rendered) {
+        view.render();
+    }
+});
+</script>
+
+</head>
+
+<body id="menu">
+
+<div id="loading" class="loading">Brewing ...</div>
+
+<header class="main"></header>
+
+<div class="drop"></div>
+
+<!-- index page -->
+<div class="page" id="menu-index-page">
+	<header>
+        <div id="config" class="config btn">
+            <i class="icon-cog"></i>
+        </div>
+
+        <div id="camera" class="camera btn">
+            <i class="icon-camera-retro"></i>
+        </div>
+    </header>
+
+    <ul id="opts" class="opts">
+        <li data-opt="all" class="selected">All</li>
+        <li data-opt="dark">Dark</li>
+        <li data-opt="light">Light</li>
+        <li data-opt="special">Special</li>
+    </ul>
+
+	<div class="scroller">
+		<div id="menu-index">
+			<!-- wait for it -->
+		</div>
+	</div>
+
+</div>
+
+<!-- detail page -->
+<div class="page" id="menu-detail-page">
+    <header>
+        <button class="back-button"></button>
+    </header>
+
+    <div class="scroller">
+        <div id="menu-detail">
+            <!-- wait for it -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

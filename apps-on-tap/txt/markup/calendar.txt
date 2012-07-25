@@ -1,0 +1,53 @@
+===== calendar-index
+<div class="runner">
+    Boston HTML5 Meetups
+</div>
+
+<ul class="stack">
+	{{meetups}}
+		<li data-meetup-id="{{id}}">
+            <div class="art">
+                <div class="cal">
+                    <span class="cal-date">{{time|moment>MMM|upcase}}</span>
+                    <span class="cal-time">{{time|moment>D}}</span>
+                </div>
+            </div>
+
+            <div class="meta">
+                <h3>{{name}}</h3>
+                <p>{{description|clean|tease>30}}</p>
+                <p class="deets">
+                    <i class="icon-time icon-large"></i>{{time|moment>dddd, MMM Do, h:mm a}}
+                </p>
+            </div>
+		</li>
+	{{/meetups}}
+</ul>
+
+===== calendar-detail
+<article>
+    {{meetup}}
+        <h1>{{name}}</h1>
+
+        <p>
+            <i class="icon-time icon-large"></i> {{time|moment>dddd, MMM Do, h:mm a}}
+        </p>
+
+        <p>
+            <address>
+                {{venue_name}}<br>
+                {{venue_address_1}}<br>
+                {{if venue_address_2}}
+                    {{venue_address_2}}<br>
+                {{/if}}
+                {{venue_city}}, {{venue_state}} {{venue_zip}}
+            </address>
+        </p>
+
+        <p>{{description|clean|grafs}}</p>
+
+        {{if event_url}}
+            <p><a href="{{event_url}}"><strong>Full details ...</strong></a></p>
+        {{/if}}
+    {{/meetup}}
+</article>

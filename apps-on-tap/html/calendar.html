@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Apps on Tap</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/theme-1.10.2.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/app.css" />
+<link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
+<!-- brightcove script -->
+<script src="../javascripts/lib/brightcove-app-cloud-1.10.2.js"></script>
+
+<!-- custom scripts -->
+<script src="../javascripts/lib/moment.min.js"></script> 
+<script src="../javascripts/app.js"></script> 
+<script src="../javascripts/pipes.js"></script> 
+<script src="../javascripts/views/calendar.js"></script> 
+<script>
+var view = new CalendarView();
+
+//$(bc).on("viewfocus", function () {
+$(bc).on("viewfocus", function () {
+    if (!view.rendered) {
+        view.render();
+    }
+});
+</script>
+
+</head>
+
+<body id="calendar">
+
+<div id="loading" class="loading">Brewing ...</div>
+
+<header class="main"></header>
+
+<div class="drop"></div>
+
+<!-- index page -->
+<div class="page" id="calendar-index-page">
+    <header>
+        <div id="refresh" class="refresh btn">
+            <i class="icon-refresh"></i>
+        </div>
+    </header>
+
+	<div class="scroller">
+		<div id="calendar-index">
+			<!-- wait for it -->
+		</div>
+	</div>
+</div>
+
+<!-- detail page -->
+<div class="page" id="calendar-detail-page">
+    <header>
+        <button class="back-button"></button>
+    </header>
+
+    <div class="scroller">
+        <div id="calendar-detail">
+            <!-- wait for it -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

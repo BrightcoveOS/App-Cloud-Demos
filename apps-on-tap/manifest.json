@@ -1,0 +1,74 @@
+{
+    "name": "Apps on Tap",
+    "description": "Demo",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Appy Hour",
+            "navigationIcon": "images/icons/menu.png",
+            "uri": "./html/menu.html",
+            "markup": "./txt/markup/menu.txt",
+            "data": [
+                {
+                    "name": "beers",
+                    "contentFeed": "50019dfcec8e60277d00fdb8",
+                    "type": "text_block"
+                }
+            ]
+        },
+        {
+            "navigationTitle": "Buzz",
+            "navigationIcon": "images/icons/buzz.png",
+            "uri": "./html/buzz.html",
+            "markup": "./txt/markup/buzz.txt"
+        },
+        {
+            "navigationTitle": "Bars",
+            "navigationIcon": "images/icons/places.png",
+            "uri": "./html/places.html",
+            "markup": "./txt/markup/places.txt",
+            "settings": [
+                {
+                    "name": "place-types",
+                    "type": "string",
+                    "value": "bar"
+                },
+                {
+                    "name": "place-radius",
+                    "type": "string",
+                    "value": "5000"
+                },
+                {
+                    "name": "place-key",
+                    "type": "string",
+                    "value": "AIzaSyDkkk1yDfh0CUlScbSlJ0zw-uvHZ3SH_Wc"
+                }
+            ]
+        },
+        {
+            "navigationTitle": "On Tap",
+            "navigationIcon": "images/icons/calendar.png",
+            "uri": "./html/calendar.html",
+            "markup": "./txt/markup/calendar.txt",
+            "data": [
+                {
+                    "name": "meetups",
+                    "contentFeed": "50081c5e91954a3f5300c404",
+                    "type": "feed"
+                }
+            ]
+        }
+   ]
+}

@@ -1,0 +1,61 @@
+===== places-index
+<div class="runner">
+    Bars near me
+</div>
+
+<ul class="stack">
+    {{places|sort>distance}}
+        <li data-reference="{{reference}}" data-name="{{name}}">
+            <div class="art">
+                <img src="http://maps.google.com/maps/api/staticmap?sensor=true&zoom=14&size=110x110&markers=color:red%7C{{geometry.location.lat}},{{geometry.location.lng}}&scale={{devicePixelRatio}}" width="110" height="110"/>
+            </div>
+
+            <div class="meta">
+                <h3>{{name}}</h3>
+                <p>{{vicinity}}</p>
+                <p>
+                    {{if rating}}
+                        <span class="stars">{{rating|stars}}</span> ({{rating}})
+                    {{else}}
+                        (No rating)
+                    {{/if}}
+                </p>
+                <p class="deets">
+                    {{distance|fix>1}} miles
+                </p>
+            </div>
+        </li>
+    {{/places}}
+</ul>
+
+{{if places|empty}}
+    <p>Oh noes! There are no bars within stumbling distance.</p>
+{{/if}}
+
+===== places-detail-preload
+<article>
+    <h1>{{place.name}}</h1>
+</article>
+
+===== places-detail
+<article>
+    {{place}}
+        <h1>{{name}}</h1>
+
+        <p>{{formatted_address}}</p>
+
+        <p>
+            {{if formatted_phone_number}}
+                <i class="icon-phone-sign icon-large"></i>
+                <a href="tel:{{formatted_phone_number}}">{{formatted_phone_number}}</a>
+            {{/if}}
+
+            <i class="icon-globe icon-large" style="margin-left:8px"></i>
+            <a href="http://maps.google.com/maps?daddr={{formatted_address|url}}&saddr=Current+Location&dirflg=w">Directions</a>
+        </p>
+
+        <div class="img-place" style="width:275px; height:200px">
+            <img onload="this.style.opacity=1" src="http://maps.google.com/maps/api/staticmap?sensor=true&zoom=14&size=275x200&markers=color:red%7C{{geometry.location.lat}},{{geometry.location.lng}}&scale={{devicePixelRatio}}" width="275" height="200"/>
+        </div>
+    {{/place}}
+</article>

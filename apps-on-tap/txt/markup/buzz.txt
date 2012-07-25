@@ -1,0 +1,39 @@
+===== buzz-index
+<div class="runner">
+    Buzz from App Cloud
+</div>
+
+<ul class="stack">
+    {{tweets}}
+        <li data-tweet-id="{{id_str}}">
+            <div class="art">
+                <img src="{{user.profile_image_url}}" width="50" height="50" />
+            </div>
+
+            <div class="meta">
+                <h3>{{user.screen_name}}</h3>
+                <p>{{text}}</p>
+                <p class="deets">
+                    <i class="icon-twitter icon-large"></i>{{created_at|fromNow}}
+                </p>
+            </div>
+        </li>
+    {{/tweets}}
+</ul>
+
+===== buzz-detail
+<article>
+    {{tweet}}
+        <div class="buzz-head">
+            <img src="{{user.profile_image_url}}" width="50" height="50" />
+            <h1 style="margin:0">{{user.screen_name}}</h1>
+            <p><a href="https://twitter.com/{{user.screen_name}}">View on Twitter</a></p>
+        </div>
+        <div class="buzz-body">
+            <p>{{text|links}}</p>
+            <p class="deets">
+                <i class="icon-twitter icon-large"></i> {{created_at|moment>dddd, MMM Do, h:mm a}}
+            </p>
+        </div>
+    {{/tweet}}
+</article>

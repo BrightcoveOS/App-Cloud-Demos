@@ -1,0 +1,291 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial;
+    background: url(../images/tile_beige.png);
+}
+
+h1, h2, h3 {
+    color: #222;
+    letter-spacing: -0.5px;
+}
+
+img {
+    background-color: rgba(0, 0, 0, 0.10);
+    -webkit-user-select: none;
+}
+
+p {
+    margin: 3px 0;
+}
+
+a, span[data-href] {
+    color: #993333;
+}
+
+a:active, span[data-href]:active {
+    color: white;
+    background-color: #993333;
+}
+
+header.main {
+    background: url(../images/header.png), url(../images/tile_green.png);
+    background-repeat: no-repeat, repeat-x;
+    background-position: center;
+    background-size: contain;
+}
+
+header {
+    height: 40px;
+    padding: 4px 8px;
+}
+
+.drop {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    z-index: 100;
+    background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0%, rgba(0,0,0,0.65)),
+        color-stop(100%, rgba(0,0,0,0))
+    );
+}
+
+ul.grid {
+    padding: 8px;
+    -webkit-user-select: none;
+}
+
+ul.grid li {
+    background-color: white;
+    display: inline-block;
+    margin: 6px 4px;
+    -webkit-box-shadow: 0 3px 5px #000;
+    -webkit-transition: opacity 250ms linear;
+}
+
+ul.stack li {
+    min-height: 55px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    -webkit-box-align: top;
+    padding: 5px;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    border-bottom: 1px solid rgba(0, 0, 0, .25);
+    word-wrap: break-word;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+ul.stack li.touched {
+    background-color: green;
+}
+
+ul.stack li:first-child {
+    border-top: none;
+}
+
+ul.stack li:last-child {
+    border-bottom: none;
+}
+
+ul.stack li .art {
+    padding: 5px;
+}
+
+ul.stack li .art img {
+    -webkit-box-shadow: 1px 1px 4px 0 #333;
+}
+
+ul.stack li .meta {
+    -webkit-box-flex: 1;
+    padding: 6px 6px;
+}
+
+ul.stack li .meta p {
+    margin-bottom: 4px;
+}
+
+figure {
+    line-height: 50%;
+}
+
+figcaption {
+    font-size: 80%;
+    line-height: normal;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.70);
+    max-width: 70px;
+    max-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 3px;
+    position: absolute;
+}
+
+article {
+    padding: 10px;
+}
+
+article .img-place {
+    margin: 15px 0;
+    -webkit-box-shadow: 0 3px 5px #000;
+    line-height: 50%;
+}
+
+article img {
+    opacity: 0;
+    -webkit-transition: opacity 200ms linear;
+}
+
+article h1 {
+    margin-bottom: 10px;
+}
+
+article p {
+    margin-bottom: 10px;
+}
+
+small {
+    color: #666;
+}
+
+.deets {
+    color: #666;
+    font-size: 80%;
+}
+
+.buzz-head h1 {
+    margin: 0;
+}
+
+.buzz-head img {
+    float: left;
+    margin-right: 10px;
+    opacity: 1;
+    -webkit-box-shadow: 0 3px 5px #000;
+}
+
+.buzz-body {
+    margin: 15px 0;
+}
+
+.cal {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    -webkit-box-shadow: 1px 1px 4px 0 #333;
+    -webkit-user-select: none;
+}
+
+.cal-date {
+    background-color: #933;
+    display: block;
+    padding: 4px;
+}
+
+.cal-time {
+    display: block;
+    padding: 4px;
+    font-size: 160%;
+}
+
+.stars {
+    font-family: "FontAwesome";
+}
+
+.loading {
+    background-color: #933;
+    color: white;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-weight: bold;
+    font-size: 85%;
+    padding: 3px 6px;
+    z-index: 100;
+    opacity: 0;
+    -webkit-transition: opacity 250ms linear;
+}
+
+.opts {
+    background-color: #333;
+    position: absolute;
+    z-index: 50;
+    width: 75px;
+    top: 75px;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: 0 0 8px #000;
+    background: url(../images/tile_blue.png);
+    -webkit-user-select: none;
+    -webkit-transform: translate3d(-80px, 0px, 0px);
+    -webkit-transition: -webkit-transform 150ms ease-out;
+}
+
+.opts li {
+    display:block;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 8px;
+    text-align: center;
+}
+
+.opts li:active {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.opts li.selected {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.btn {
+    position: absolute;
+    -webkit-user-select: none;
+    color: white;
+    padding: 7px 10px;
+    z-index: 500;
+}
+
+.btn:active {
+    -webkit-transform: scale(0.75);
+}
+
+.config {
+    font-size: 185%;
+    left: 0;
+    top: 0;
+}
+
+.camera, .refresh {
+    font-size: 165%;
+    top: 3px;
+    right: 0;
+}
+
+.runner {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #DDD;
+    padding: 5px 4px 3px 4px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    background: url(../images/tile_green.png);
+    border-bottom: 1px solid rgba(0, 0, 0, .25);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+@media all and (orientation: portrait) {
+}
+
+@media all and (orientation: landscape) {
+}

@@ -1,0 +1,35 @@
+===== menu-index
+<ul class="grid">
+	{{beers}}
+		<li data-beer-id="{{id}}" data-types="{{types}}">
+			<figure>
+				<figcaption>{{name}}</figcaption>
+				<img src="{{image|thumbnail>90}}" width="90" height="90"/>
+			</figure>
+		</li>
+	{{/beers}}
+</ul>
+
+===== menu-detail
+<article>
+    <h1>{{beer.name}}</h1>
+
+    <p>{{beer.description}}</p>
+
+    {{beer.image}}
+        <div class="img-place" style="width:{{optimal_width}}px; height:{{optimal_height}}">
+            <img onload="this.style.opacity=1" src="http://transcode.appcloud.brightcove.com?image={{url}}&width={{optimal_width}}&height={{optimal_height}}" width="{{optimal_width}}" height="{{optimal_height}}"/>
+        </div>
+    {{/beer.image}}
+</article>
+
+===== snap-detail
+<article>
+    <h1>New Beer</h1>
+
+    <p>Beery nice!</p>
+
+    <div class="img-place" style="width:{{width}}px; height:{{height}}px">
+        <img style="opacity:1" src="{{src}}" width="{{width}}" height="{{height}}"/>
+    </div>
+</article>
