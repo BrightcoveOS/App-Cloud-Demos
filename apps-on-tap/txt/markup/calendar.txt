@@ -4,8 +4,8 @@
 </div>
 
 <ul class="stack">
-	{{meetups}}
-		<li data-meetup-id="{{id}}">
+    {{meetups}}
+        <li data-meetup-id="{{id}}">
             <div class="art">
                 <div class="cal">
                     <span class="cal-date">{{time|moment>MMM|upcase}}</span>
@@ -20,8 +20,8 @@
                     <i class="icon-time icon-large"></i>{{time|moment>dddd, MMM Do, h:mm a}}
                 </p>
             </div>
-		</li>
-	{{/meetups}}
+        </li>
+    {{/meetups}}
 </ul>
 
 ===== calendar-detail

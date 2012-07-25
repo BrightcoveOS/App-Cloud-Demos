@@ -1,13 +1,13 @@
 ===== menu-index
 <ul class="grid">
-	{{beers}}
-		<li data-beer-id="{{id}}" data-types="{{types}}">
-			<figure>
-				<figcaption>{{name}}</figcaption>
-				<img src="{{image|thumbnail>90}}" width="90" height="90"/>
-			</figure>
-		</li>
-	{{/beers}}
+    {{beers}}
+        <li data-beer-id="{{id}}" data-types="{{types}}">
+            <figure>
+                <figcaption>{{name}}</figcaption>
+                <img src="{{image|thumbnail>90}}" width="90" height="90"/>
+            </figure>
+        </li>
+    {{/beers}}
 </ul>
 
 ===== menu-detail
