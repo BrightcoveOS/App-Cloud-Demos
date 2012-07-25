@@ -1637,7 +1637,7 @@ $( "body" ).html( html );</pre>
     }
     
     $.ajax( {
-      url: bc.configurations.markup + "?" + Math.random(),
+      url: bc.configurations.markup,
       success: success,
       error: error
     });
@@ -1678,7 +1678,7 @@ $( "body" ).html( html );</pre>
     }
     
     $.ajax( {
-      url: bc.configurations.locales + "?" + Math.random(),
+      url: bc.configurations.locales,
       success: success,
       error: error
     });
