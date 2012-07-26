@@ -1,37 +1,70 @@
-// a custom pipe for displaying video runtime in "mm:ss" notation
-Mark.pipes.runtime = function (time, factor) {
-    if (!factor) {
-        factor = 1;
-    }
+/*
+ * Custom pipes for Markup.js
+ * See https://github.com/adammark/Markup.js#writing-custom-pipes
+ */
 
-    var m = Math.floor(time / (60 * factor));
-    var s = Math.floor((time / factor) % 60);
-
-    return m + ":" + ("00" + s).substr(-2);
-};
-
-// a custom pipe for formatting a date (see momentjs.com)
+/*
+ * Format a date with Moment.js. The input can be a Date object or UTC value.
+ *
+ * Requires Moment.js: http://momentjs.com/
+ *
+ * Example:
+ *
+ * {{created_at|moment>M/D/YYYY}}
+ */
 Mark.pipes.moment = function (date, format) {
     return moment(new Date(+date || date)).format(format);
 };
 
+/*
+ * Express a date in "time ago" notation with Moment.js, e.g. "10 minutes ago".
+ * The input can be a Date object or UTC value.
+ *
+ * Requires Moment.js: http://momentjs.com/
+ *
+ * Example:
+ *
+ * {{created_at|fromNow}}
+ */
 Mark.pipes.fromNow = function (date) {
     return moment(new Date(+date || date)).fromNow();
 };
 
-// TODO doc
+/*
+ * Wrap all URLs in links.
+ *
+ * Example:
+ *
+ * {{article|links}}
+ */
 Mark.pipes.links = function (str) {
     return str.replace(/\b(https?:[^\b\s]+)\b/g, "<a href=\"$1\">$1</a>");
 };
 
-// TODO doc
+/*
+ * Wrap text blocks (delimited by line breaks) in <p> tags. Best to
+ * do this after scrubbing the input of all HTML.
+ *
+ * Example:
+ *
+ * {{content|clean|grafs}}
+ */
 Mark.pipes.grafs = function (str) {
     return str.replace(/(.+)/g, function (s, p1) {
         return "<p>" + p1 + "</p>";
     });
 };
 
-// generate a square thumbnail from an image object (url, width, height)
+/*
+ * Generate a square thumbnail image. The "image" parameter is an object
+ * with src, width and height attributes. The "size" parameter is the
+ * thumbnail size in pixels. Note this uses the App Cloud image transcoding
+ * API, which is not available in App Cloud Core.
+ *
+ * Example:
+ *
+ * {{image|thumbnail>100}}
+ */
 Mark.pipes.thumbnail = function(image, size) {
     var minAspect = Math.min(image.width, image.height);
 
@@ -48,18 +81,17 @@ Mark.pipes.thumbnail = function(image, size) {
     return url;
 };
 
+/*
+ * Output star characters to the nearest half-star given a decimal input.
+
+ * Requires Font Awesome. http://fortawesome.github.com/Font-Awesome/
+ * 
+ * Example:
+ *
+ * {{rating|stars}}
+ */
 Mark.pipes.stars = function (rating) {
     var n = Math.round(+rating * 2) / 2;
 
     return new Array(Math.floor(n) + 1).join("&#xf005;") + (n % 1 ? "&#xf089;" : "");
-};
-
-Mark.pipes.scale = function (val, range, ticks, factor) {
-    var f = +factor;
-    var v = +val;
-    var r = v % f;
-    var n = r < f / 2 ? v - (v % f) : (v + f) - (v % f);
-    console.log(n, r);
-
-    return (n / f) * Math.floor(+range / +ticks);
 };
