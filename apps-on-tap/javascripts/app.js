@@ -1,5 +1,5 @@
 /*
- * Global functions for this app.
+ * Global functions for this app. (Include app.js in each view.)
  */
 var app = {};
 
@@ -39,8 +39,8 @@ app.renderTemplate = function (elemId, templateId, context) {
 };
 
 /*
- * Compare two data feeds (JSON objects). For more complex comparison
- * operations, see bc.utils.isEqual().
+ * Compare two data feeds (objects). For more complex comparison operations,
+ * see bc.utils.isEqual().
  */
 app.dataChanged = function (feed1, feed2) {
     return JSON.stringify(feed1) !== JSON.stringify(feed2);
@@ -74,7 +74,7 @@ app.freeImage = function (img) {
 };
 
 /*
- * Animation an element to position (x, y).
+ * Animate an element (with position: absolute) to point x, y in the viewport.
  */
 app.moveTo = function (elemId, x, y) {
     var elem = document.getElementById(elemId);
