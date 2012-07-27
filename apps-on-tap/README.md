@@ -3,8 +3,6 @@
 This template demonstrates how to create a fully formed, cross-platform phone 
 app using multiple views and multiple data services.
 
-*Note code is not yet documented*
-
 ## Core concepts
 
 * Using App Cloud image transcoding to crop and resize images at runtime. *Note

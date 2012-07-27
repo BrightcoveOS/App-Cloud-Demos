@@ -1,8 +1,27 @@
+/*
+ * Controller logic for places.html. All variables and methods are private 
+ * except where noted.
+ *
+ * Usage:
+ *
+ * var view = new PlacesView();
+ * view.render();
+ *
+ */
 function PlacesView() {
+    /*
+     * The user's current position.
+     */
     var position = {};
 
+    /*
+     * (PUBLIC) Is this view rendered?
+     */
     this.rendered = false;
 
+    /*
+     * (PUBLIC) Render this view.
+     */
     this.render = function () {
         initHandlers();
 
@@ -13,19 +32,30 @@ function PlacesView() {
         this.rendered = true;
     };
 
+    /*
+     * Initialize all event handlers.
+     */
     var initHandlers = function () {
         $("#places-index").on("tap", "li", handlePlaceTap);
         $(".back-button").on("tap", handleBackTap);
         $("#refresh").on("tap", handleRefreshTap);
     };
 
+    /*
+     * Handle data from bc.device.getLocation().
+     */
     var handlePositionData = function (data) {
+        // set position data in local variable for later use
         position.lat = data.latitude;
         position.lng = data.longitude;
 
+        // then fetch places data
         bc.device.fetchContentsOfURL(getSearchURL(), handleSearchData, handleError);
     };
 
+    /*
+     * Handle data from the Google Places API (/place/search).
+     */
     var handleSearchData = function (data) {
         try {
             data = JSON.parse(data);
@@ -44,37 +74,9 @@ function PlacesView() {
         app.hideLoadingMessage();
     };
 
-    var handleError = function (error) {
-        bc.device.alert(error.errorMessage);
-    };
-
-    var handlePlaceTap = function (evt) {
-        var reference = this.getAttribute("data-reference");
-        var name = this.getAttribute("data-name");
-
-        app.showLoadingMessage();
-
-        app.renderTemplate("places-detail", "places-detail-preload", { "place": { "name": name } });
-
-        bc.ui.forwardPage("#places-detail-page");
-
-        bc.device.fetchContentsOfURL(getPlaceURL(reference), handlePlaceData, handleError);
-
-        evt.preventDefault();
-    };
-
-    var handleRefreshTap = function (evt) {
-        app.showLoadingMessage();
-
-        bc.device.fetchContentsOfURL(getSearchURL(), handleSearchData, handleError);
-    };
-
-    var handleBackTap = function (evt) {
-        app.freeImage(document.querySelector("article img"));
-
-        bc.ui.backPage();
-    };
-
+    /*
+     * Handle data from the Google Places API (/place/details).
+     */
     var handlePlaceData = function (data) {
         try {
             data = JSON.parse(data);
@@ -90,6 +92,60 @@ function PlacesView() {
         app.hideLoadingMessage();
     };
 
+    /*
+     * Handle an error in fetching the user's location or places data.
+     */
+    var handleError = function (error) {
+        bc.device.alert(error.errorMessage);
+    };
+
+    /*
+     * Handle a "tap" event on a list item.
+     */
+    var handlePlaceTap = function (evt) {
+        var reference = this.getAttribute("data-reference");
+        var name = this.getAttribute("data-name");
+
+        app.showLoadingMessage();
+
+        // render the detail page immediately with some data
+        app.renderTemplate("places-detail", "places-detail-preload", { "place": { "name": name } });
+
+        bc.ui.forwardPage("#places-detail-page");
+
+        // then get the full details and render again
+        bc.device.fetchContentsOfURL(getPlaceURL(reference), handlePlaceData, handleError);
+
+        evt.preventDefault();
+    };
+
+    /*
+     * Handle a "tap" event on the refresh button.
+     */
+    var handleRefreshTap = function (evt) {
+        app.showLoadingMessage();
+
+        bc.device.fetchContentsOfURL(getSearchURL(), handleSearchData, handleError);
+    };
+
+    /*
+     * Handle a "tap" event on the back button.
+     */
+    var handleBackTap = function (evt) {
+        app.freeImage(document.querySelector("article img"));
+
+        bc.ui.backPage();
+    };
+
+    /*
+     * Get the search URL for the user's current position. This URL includes
+     * three settings defined in manifest.json.
+     *
+     * See https://developers.google.com/places/documentation/ for more 
+     * information about the Google Places API.
+     *
+     * IMPORTANT: GET YOUR OWN API KEY AT https://code.google.com/apis/console/
+     */
     var getSearchURL = function () {
         return "https://maps.googleapis.com/maps/api/place/search/json?sensor=true" +
             "&location=" + position.lat + "," + position.lng +
@@ -98,12 +154,24 @@ function PlacesView() {
             "&key=" + bc.core.getSetting("place-key");
     };
 
+    /*
+     * Get the detail URL for a place with the given reference ID. This URL 
+     * includes a setting defined in manifest.json.
+     *
+     * See https://developers.google.com/places/documentation/ for more 
+     * information about the Google Places API.
+     *
+     * IMPORTANT: GET YOUR OWN API KEY AT https://code.google.com/apis/console/
+     */
     var getPlaceURL = function (reference) {
         return "https://maps.googleapis.com/maps/api/place/details/json?sensor=true" +
             "&reference=" + reference +
             "&key=" + bc.core.getSetting("place-key");
     };
 
+    /*
+     * Get the approximate distance between two geo coordinates.
+     */
     var getDistance = function (p1, p2) {
         var radians = function (n) {
             return n * Math.PI / 180;
