@@ -22,10 +22,11 @@ app.hideLoadingMessage = function() {
 
 /*
  * Render a Markup.js template given the template ID, element ID and context
- * object. See https://github.com/adammark/Markup.js and
+ * object. Note templates are automatically loaded into bc.templates object.
+ * See docs at https://github.com/adammark/Markup.js and article at
  * http://blog.brightcove.com/en/2012/05/making-better-markup-markupjs
  */
-app.renderTemplate = function (elemId, templateId, context) {
+app.renderTemplate = function (templateId, elemId, context) {
     var options = {
         globals: {
             devicePixelRatio: window.devicePixelRatio || 1

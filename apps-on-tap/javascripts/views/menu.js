@@ -154,7 +154,7 @@ function MenuView() {
                     "height": height
                 };
 
-                app.renderTemplate("menu-detail", "snap-detail", context);
+                app.renderTemplate("snap-detail", "menu-detail", context);
 
                 bc.ui.forwardPage("#menu-detail-page");
             };

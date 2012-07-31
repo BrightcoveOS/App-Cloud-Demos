@@ -109,7 +109,7 @@ function PlacesView() {
         app.showLoadingMessage();
 
         // render the detail page immediately with some data
-        app.renderTemplate("places-detail", "places-detail-preload", { "place": { "name": name } });
+        app.renderTemplate("places-detail-preload", "places-detail", { "place": { "name": name } });
 
         bc.ui.forwardPage("#places-detail-page");
 
