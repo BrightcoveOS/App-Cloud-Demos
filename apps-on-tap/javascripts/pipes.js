@@ -83,7 +83,7 @@ Mark.pipes.thumbnail = function(image, size) {
 
 /*
  * Output star characters to the nearest half-star given a decimal input.
-
+ *
  * Requires Font Awesome. http://fortawesome.github.com/Font-Awesome/
  * 
  * Example:
@@ -94,4 +94,12 @@ Mark.pipes.stars = function (rating) {
     var n = Math.round(+rating * 2) / 2;
 
     return new Array(Math.floor(n) + 1).join("&#xf005;") + (n % 1 ? "&#xf089;" : "");
+};
+
+/*
+ * Log a value to the console for testing purposes.
+ */
+Mark.pipes.log = function (obj) {
+    console.log(obj);
+    return obj;
 };
