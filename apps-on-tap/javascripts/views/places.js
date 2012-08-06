@@ -125,7 +125,7 @@ function PlacesView() {
     var handleRefreshTap = function (evt) {
         app.showLoadingMessage();
 
-        bc.device.fetchContentsOfURL(getSearchURL(), handleSearchData, handleError);
+        bc.device.getLocation(handlePositionData, handleError);
     };
 
     /*
