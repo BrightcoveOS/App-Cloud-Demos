@@ -39,6 +39,7 @@ function PlacesView() {
         $("#places-index").on("tap", "li", handlePlaceTap);
         $(".back-button").on("tap", handleBackTap);
         $("#refresh").on("tap", handleRefreshTap);
+        $("body").on("tap", "span[data-href]", handleExternalLinkTap);
     };
 
     /*
@@ -135,6 +136,13 @@ function PlacesView() {
         app.freeImage(document.querySelector("article img"));
 
         bc.ui.backPage();
+    };
+
+    /*
+     * Open a "link" (<span data-href="..."">) in an external program.
+     */
+    var handleExternalLinkTap = function (evt) {
+        bc.device.openURI(this.getAttribute("data-href"));
     };
 
     /*

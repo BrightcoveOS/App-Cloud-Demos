@@ -50,8 +50,9 @@
                 <a href="tel:{{formatted_phone_number}}">{{formatted_phone_number}}</a>
             {{/if}}
 
+            <!-- see handleExternalLinkTap() in places.js -->
             <i class="icon-globe icon-large" style="margin-left:8px"></i>
-            <a href="http://maps.google.com/maps?daddr={{formatted_address|url}}&saddr=Current+Location&dirflg=w">Directions</a>
+            <span data-href="http://maps.google.com/maps?daddr={{formatted_address|url}}&saddr=Current+Location&dirflg=w">Directions</span>
         </p>
 
         <div class="img-place" style="width:275px; height:200px">
