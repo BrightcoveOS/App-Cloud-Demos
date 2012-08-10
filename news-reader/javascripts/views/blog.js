@@ -153,17 +153,3 @@ function BlogView() {
     };
 
 }
-
-// initialize the view when bc is ready
-$(bc).bind("init", function () {
-    var view = new BlogView();
-    view.init();
-});
-
-// enable auto-rotation
-bc.device.setAutoRotateDirections(["all"]);
-
-// lock scrolling (TODO move into bc.js)
-$(document).bind("touchstart", function(e) {
-    e.preventDefault();
-});

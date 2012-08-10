@@ -26,6 +26,13 @@
 <script type="text/javascript" src="../javascripts/app.js"></script>
 <script type="text/javascript" src="../javascripts/views/blog.js"></script> 
 
+<script>
+$(bc).bind("init", function () {
+    var view = new BlogView();
+    view.init();
+});
+</script>
+
 </head>
 
 <body>
