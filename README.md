@@ -46,6 +46,12 @@ they come into view.
 * **file-download:** Demonstrates how to download, retrieve and delete files
 on disk using `bc.device.requestDownload()` and associated methods and events.
 
+* **apps-on-tap:** Demonstrates how to create a fully formed, cross-platform 
+phone app using multiple views and multiple data services.
+
+* **dual-screen-video:** Demonstrates one way to create a "dual screen" app
+with Apple TV and dual screen mirroring capability.
+
 [1]: http://www.brightcove.com/en/content-app-platform
 [2]: http://docs.brightcove.com/en/app-cloud/
 [3]: http://groups.google.com/group/bcappcloud
