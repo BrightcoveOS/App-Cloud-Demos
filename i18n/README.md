@@ -20,11 +20,12 @@ Acceptable values for this demo are "en", "es" and "ja".
 Then specify the appropriate locale file in manifest.json (defaults to
 `./txt/locales/en.txt`).
 
-The content feed defined in manifest.json points to 
-http://news.google.com/news?pz=1&cf=all&ned=us&hl={"lang":"en"}&output=rss
+The content feed defined in manifest.json points to [Google News RSS][3]. If you
+recreate the feed in App Cloud Studio, replace `hl=en` with `hl={"lang":"en"}`.
 
 Note, native UI components (e.g. navigation icons) cannot be translated at this
 time.
 
 [1]: https://github.com/adammark/Markup.js
 [2]: http://docs.brightcove.com/en/app-cloud/using-parameters-in-content-feed-urls
+[3]: http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&output=rss
