@@ -30,13 +30,11 @@ Then declare the content feed in your manifest file:
 In index.html, change the ZIP Code value:
 
 ``` javascript
-<script>
 var view = new WeatherView();
 
 $(bc).bind("init", function () {
     view.loadWeather("90210");
 });
-</script>
 ```
 
 (In a real app, you would solicit this information from the user.)
