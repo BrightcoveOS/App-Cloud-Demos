@@ -1,0 +1,17 @@
+{
+  "name": "Dual Screen Video Template",
+  "description": "Demo of using dual screen Apple TV capabilities with video.",
+  "version": "2.1",
+  "devices": [ "iPad" ],
+  "platformConfig": {
+    "iOS": {
+      "nativeNavigation": false
+    }
+  },
+  "views": [
+  {
+    "navigationTitle": "home",
+    "uri": "html/index.html"
+  }
+  ]
+}

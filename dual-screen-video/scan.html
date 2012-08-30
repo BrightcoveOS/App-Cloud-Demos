@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preview</title>
+    <style>
+        body {
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 auto;
+        }
+        .qr {
+            margin: 25px;
+        }
+        img {
+            border: 1px solid #CCC;
+        }
+    </style>
+
+    <script>
+        var url = location.href.replace(/\w+\.html/, "manifest.json");
+        var src = "http://qrcode.kaywa.com/img.php?s=8&d=" + url;
+    </script>
+</head>
+
+<body>
+
+<h1><script>document.write(url);</script></h1>
+
+<div class="qr">
+    <script>document.write('<img src="' + src + '" width="344" height="344"/><br>');</script>
+
+    <small>From <a href="http://qrcode.kaywa.com/">http://qrcode.kaywa.com/</a></small>
+</div>
+
+<p>Note: The URL to your manifest file should be a network address, not "localhost."</p>
+
+</body>
+</html>
