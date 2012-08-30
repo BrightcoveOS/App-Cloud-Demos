@@ -1,15 +1,30 @@
 # Internationalization (i18n)
 
 This template demonstrates how to externalize language strings in the HTML layer
-using [JavaScript templates][1], properties files, and [parameterized content feeds][2].
+using JavaScript templates, properties files, and parameterized content feeds.
+
+## Core Concepts
+
+* Using [Markup.js][1] to generate HTML on the fly from strings stored in external
+text files
+* Using Markup.js to populate the UI with language-specific strings (also stored
+in external text files)
+* Loading language-specific content by passing a language code to a 
+[parameterized content feed][2]
+
+## Usage
 
 To change the language, first update the language code on line 1 of app.js. 
 Acceptable values for this demo are "en", "es" and "ja".
 
-Then specify the appropriate locale file in manifest.json.
+Then specify the appropriate locale file in manifest.json (defaults to
+`./txt/locales/en.txt`).
 
-Note, translations are not yet possible in native UI components (e.g. navigation 
-icons).
+The content feed defined in manifest.json points to 
+http://news.google.com/news?pz=1&cf=all&ned=us&hl={"lang":"en"}&output=rss
+
+Note, native UI components (e.g. navigation icons) cannot be translated at this
+time.
 
 [1]: https://github.com/adammark/Markup.js
 [2]: http://docs.brightcove.com/en/app-cloud/using-parameters-in-content-feed-urls

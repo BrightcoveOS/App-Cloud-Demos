@@ -3,4 +3,11 @@
 This template demonstrates how to progressively load images as they come into 
 view.
 
-See progressive.js for implementation details.
+## Core Concepts
+
+* Using a "lazy loading" script to defer loading of images until they enter
+the viewport
+
+## Usage
+
+See javascripts/lib/progressive.js for implementation details.

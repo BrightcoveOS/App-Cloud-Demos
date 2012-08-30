@@ -2,11 +2,21 @@
 
 This template demonstrates how to download, retrieve and delete files on disk 
 using `bc.device.requestDownload()` and associated methods and events. These 
-methods and events are abstracted in the `FileManager` function, which relies
-on `bc.core.cache()` to store arbitrary metadata associated with each file.
+methods and events are abstracted in a `FileManager` object, which uses 
+`bc.core.cache()` to store arbitrary metadata associated with each downloaded
+file.
 
 This implementation is not authoritative, nor is it meant to demonstrate how
 to create a fully offline application.
+
+## Core concepts
+
+* Downloading a PDF or MP4 file to the file system
+* Retrieving a previously downloaded file
+* Deleting a previously downloaded file
+* Storing file metadata with `bc.core.cache()`
+
+## Usage
 
 ### Instantiating the FileManager object
 

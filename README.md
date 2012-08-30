@@ -1,7 +1,7 @@
 # App Cloud Demos
 
 This repository contains a variety of [App Cloud][1] code samples that can be 
-previewed in Google Chrome or in the App Cloud Workshop for [iOS][5] or 
+previewed in Google Chrome or in the App Cloud Workshop app for [iOS][5] or 
 [Android][6].
 
 See the [App Cloud docs][2], [App Cloud Developer Blog][7], and 
@@ -19,8 +19,8 @@ phone app using multiple views and multiple data services.
 * **authentication:** Demonstrates one way to implement authentication and 
 authorization via a REST API.
 
-* **dual-screen-video:** Demonstrates one way to create a "dual screen" app
-with Apple TV and dual screen mirroring capability.
+* **dual-screen-video:** Demonstrates one way to create a dual-screen video 
+app for Apple TV.
 
 * **file-download:** Demonstrates how to download, retrieve and delete files
 on disk using `bc.device.requestDownload()` and associated methods and events.
@@ -44,8 +44,8 @@ feed using a weather API.
 * **progressive-images:** Demonstrates how to progressively load images as 
 they come into view.
 
-* **reading-list:** Demonstrates how to use `bc.core.cache()` to set and get
-a list of saved articles.
+* **reading-list:** Demonstrates how to save data in the cache and retrieve it
+for later use.
 
 * **universal:** Demonstrates one way to implement a "universal" app that 
 works across phones and tablets.

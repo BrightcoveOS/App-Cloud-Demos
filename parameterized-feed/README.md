@@ -3,8 +3,13 @@
 This template demonstrates how to create a parameterized content feed using
 the [Google Weather API][1].
 
-To create a parameterized feed, first define the parameters in your content 
-feed URL inside App Cloud Studio:
+## Core Concepts
+
+* Passing a runtime variable to a [parameterized content feed][2]
+
+## Usage
+
+To create a parameterized feed, first define the URL in App Cloud Studio:
 
 ```
 http://www.google.com/ig/api?weather={"zip":"90210"}
@@ -22,16 +27,19 @@ Then declare the content feed in your manifest file:
 ]
 ```
 
-Then load the content feed with runtime variables:
+In index.html, change the ZIP Code value:
 
 ``` javascript
-var options = {
-    parameterizedFeedValues: {
-        "zip": zip
-    }
-};
+<script>
+var view = new WeatherView();
 
-bc.core.getData("weather", handleData, handleError, options);
+$(bc).bind("init", function () {
+    view.loadWeather("90210");
+});
+</script>
 ```
 
+(In a real app, you would solicit this information from the user.)
+
 [1]: http://www.google.com/ig/api?weather=02210
+[2]: http://docs.brightcove.com/en/app-cloud/using-parameters-in-content-feed-urls

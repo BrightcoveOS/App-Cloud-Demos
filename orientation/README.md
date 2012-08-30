@@ -1,7 +1,15 @@
 # Landscape and portrait modes with CSS3 Media Queries and Flexible Box Model 
 
 This template demonstrates how to alter a layout when switching between landscape
-and portrait modes using CSS3 [Media Queries][1] and the [Flexible Box Model][2].
+and portrait modes.
+
+## Core Concepts
+
+* Enabling rotating with `bc.device.setAutoRotateDirections()`
+* Using CSS3 [Media Queries][1] and the [Flexible Box Model][2] to create
+orientiation-specific layouts
+
+## Usage
 
 To enable rotation, first call `bc.device.setAutoRotateDirections(["all"])`.
 
