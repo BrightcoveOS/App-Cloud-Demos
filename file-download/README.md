@@ -46,7 +46,7 @@ fm.onDownloadError(function (info) {
 ```
 
 Specify a function to run when a download ends. The info object contains
-id (of file), url, size, path, date, and metadata (an object)
+id (of file), url, size, path, date, and metadata (an object):
 
 ``` javascript
 fm.onDownloadEnd(function (info) {
@@ -94,7 +94,7 @@ for (var f in files) {
 ### Deleting a file
 
 Specify a function to run when a file is deleted. The info object contains
-id, url, size, path, date and metadata (an object)
+id, url, size, path, date and metadata (an object):
 
 ``` javascript
 fm.onDeleteSuccess(function (info) {
