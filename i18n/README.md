@@ -21,7 +21,8 @@ Then specify the appropriate locale file in manifest.json (defaults to
 `./txt/locales/en.txt`).
 
 The content feed defined in manifest.json points to [Google News RSS][3]. If you
-recreate the feed in App Cloud Studio, replace `hl=en` with `hl={"lang":"en"}`.
+create your own copy of this feed in App Cloud Studio, replace `hl=en` with 
+`hl={"lang":"en"}`.
 
 Note, native UI components (e.g. navigation icons) cannot be translated at this
 time.
