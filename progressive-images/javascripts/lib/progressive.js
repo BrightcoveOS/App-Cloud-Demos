@@ -29,32 +29,16 @@ function ProgressiveLoader(elementId) {
         this.bottom = y + h;
         this.width = w;
         this.height = h;
-        this.x = x;
-        this.y = y;
-        this.topleft = new Point(x, y);
-        this.topright = new Point(x + w, y);
-        this.bottomleft = new Point(x, y + h);
-        this.bottomright = new Point(x + w, y + h);
     }
-
-    // determine if a rectangle contains a point
-    Rect.prototype.contains = function (point) {
-        return point.x >= this.left &&
-               point.x <= this.right &&
-               point.y >= this.top &&
-               point.y <= this.bottom;
-    };
 
     // determine if one rectangle touches another
     Rect.prototype.intersects = function (rect) {
-        return this.contains(rect.topleft) ||
-               this.contains(rect.topright) ||
-               this.contains(rect.bottomleft) ||
-               this.contains(rect.bottomright) ||
-               rect.contains(this.topleft) ||
-               rect.contains(this.topright) ||
-               rect.contains(this.bottomleft) ||
-               rect.contains(this.bottomright);
+        return !(
+            rect.left > this.right ||
+            rect.right < this.left ||
+            rect.top > this.bottom ||
+            rect.bottom < this.top
+        );
     };
 
     // create a rectangle from a DOM element
