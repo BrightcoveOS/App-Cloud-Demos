@@ -1,8 +1,8 @@
 /*
- * Progressively load images into an element with the given element ID. This 
- * script looks for images having the attribute "data-src", then populates 
- * the "src" attribute as the images come into the geometry of the containing 
- * element (or the document body if element is undefined).
+ * Progressively load images inside an element with the given element ID (or
+ * inside the document body if no element ID is given). This script looks for 
+ * images having the attribute "data-src", then populates the "src" attribute 
+ * as the images come into view.
  *
  * Set up your images like so:
  *
@@ -64,8 +64,8 @@ function ProgressiveLoader(elementId) {
         return new Rect(rect.left, rect.top, rect.width, rect.height);
     };
 
-    // container bounds, or body bounds
-    var bounds = Rect.fromElement(document.getElementById(elementId) || document.body);
+    // the containing element
+    var elem = document.getElementById(elementId);
 
     // images having attribute "data-src"
     var imgs = document.querySelectorAll("img[data-src]");
@@ -77,6 +77,7 @@ function ProgressiveLoader(elementId) {
     function loadImages() {
         var img;
         var rect;
+        var bounds = Rect.fromElement(elem || document.body);
         var onLoadImage = function () {
             this.style.opacity = 1;
         };
@@ -102,9 +103,9 @@ function ProgressiveLoader(elementId) {
     }
 
     // listen for touch/mouse move
-    window.addEventListener("touchmove", handleScroll);
-    window.addEventListener("mousemove", handleScroll);
-    window.addEventListener("resize", loadImages);
+    elem.addEventListener("touchmove", handleScroll);
+    elem.addEventListener("mousemove", handleScroll);
+    elem.addEventListener("resize", loadImages);
 
     // load visible images on startup
     loadImages();
