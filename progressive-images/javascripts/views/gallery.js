@@ -25,7 +25,7 @@ function GalleryView() {
         document.getElementById("grid").innerHTML = markup;
 
         // initialize the image loader with the outer container (fixed area)
-        new ProgressiveLoader("grid-container");
+        ProgressiveLoader.init("grid-container");
     };
 
 }

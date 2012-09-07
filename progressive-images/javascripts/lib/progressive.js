@@ -1,16 +1,25 @@
 /*
- * Progressively load images inside an element with the given element ID (or
- * inside the document body if no element ID is given). This script looks for 
- * images having the attribute "data-src", then populates the "src" attribute 
- * as the images come into view.
+ * This script implements lazy loading of images. Set up your "lazy" images by
+ * specifying a placeholder URL in the "src" attribute and the actual URL in 
+ * the "data-src" attribute:
  *
- * Set up your images like so:
+ * <img src="placeholder.png" data-src="http://example.com/img.jpg" width="100" height="100"/>
  *
- * <img src="placeholder.png" width="100" height="100" data-src="http://example.com/img.jpg"/>
+ * Images must have a defined width and height.
  *
- * Then simply run:
+ * Then run:
  *
- * new ProgressiveLoader("elementId");
+ * ProgressiveLoader.init("some-element-id");
+ *
+ * If no element ID is provided, document.body is assumed.
+ *
+ * To make the images fade in gracefully, add this to your CSS:
+ * 
+ * img[data-src] {
+ *     opacity: .15;
+ *     -webkit-transition: opacity 200ms linear;
+ *     -webkit-transform: translate3d(0, 0, 0);
+ * }
  *
  */
 function ProgressiveLoader(elementId) {
@@ -35,7 +44,7 @@ function ProgressiveLoader(elementId) {
     var timer = null;
 
     // load all visible images inside the scrollable area
-    function loadImages() {
+    var loadImages = function () {
         var img;
         var rect;
         var bounds = elem.getBoundingClientRect();
@@ -55,7 +64,7 @@ function ProgressiveLoader(elementId) {
     }
 
     // when the user scrolls, wait 400ms, then load visible images
-    function handleScroll(evt) {
+    var handleScroll = function (evt) {
         if (timer === null) {
             timer = setTimeout(function () {
                 loadImages();
@@ -72,3 +81,7 @@ function ProgressiveLoader(elementId) {
     // load visible images on startup
     loadImages();
 }
+
+ProgressLoader.init = function (elementId) {
+    new ProgressiveLoader(elementId);
+};
