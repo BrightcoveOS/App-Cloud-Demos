@@ -82,6 +82,6 @@ function ProgressiveLoader(elementId) {
     loadImages();
 }
 
-ProgressLoader.init = function (elementId) {
+ProgressiveLoader.init = function (elementId) {
     new ProgressiveLoader(elementId);
 };
