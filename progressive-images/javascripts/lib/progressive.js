@@ -15,41 +15,18 @@
  */
 function ProgressiveLoader(elementId) {
 
-    // a coordinate from top left
-    function Point(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    // a rectangle (bounds)
-    function Rect(x, y, w, h) {
-        this.left = x;
-        this.right = x + w;
-        this.top = y;
-        this.bottom = y + h;
-        this.width = w;
-        this.height = h;
-    }
-
     // determine if one rectangle touches another
-    Rect.prototype.intersects = function (rect) {
+    var hitTest = function (rect1, rect2) {
         return !(
-            rect.left > this.right ||
-            rect.right < this.left ||
-            rect.top > this.bottom ||
-            rect.bottom < this.top
+            rect1.left   > rect2.right  ||
+            rect1.right  < rect2.left   ||
+            rect1.top    > rect2.bottom ||
+            rect1.bottom < rect2.top
         );
     };
 
-    // create a rectangle from a DOM element
-    Rect.fromElement = function (elem) {
-        var rect = elem.getBoundingClientRect();
-    
-        return new Rect(rect.left, rect.top, rect.width, rect.height);
-    };
-
     // the containing element
-    var elem = document.getElementById(elementId);
+    var elem = document.getElementById(elementId) || document.body;
 
     // images having attribute "data-src"
     var imgs = document.querySelectorAll("img[data-src]");
@@ -61,15 +38,16 @@ function ProgressiveLoader(elementId) {
     function loadImages() {
         var img;
         var rect;
-        var bounds = Rect.fromElement(elem || document.body);
+        var bounds = elem.getBoundingClientRect();
         var onLoadImage = function () {
             this.style.opacity = 1;
         };
 
         for (var i = 0; i < imgs.length; i++) {
             img = imgs[i];
-            rect = Rect.fromElement(img);
-            if (bounds.intersects(rect)) {
+            rect = img.getBoundingClientRect();
+
+            if (hitTest(bounds, rect)) {
                 img.src = img.getAttribute("data-src");
                 img.onload = onLoadImage;
             }
