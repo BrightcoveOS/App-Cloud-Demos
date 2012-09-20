@@ -16,7 +16,7 @@
         },
         {
             "uri": "html/remote.html",
-            "includeInNativeNavigation": false
+            "externalScreen": true
         }
     ]
 }
