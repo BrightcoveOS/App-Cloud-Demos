@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+    background-color: #EEE;
+    -webkit-user-select: none;
+}
+
+.block {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 25px;
+    border: 4px solid white;
+    -webkit-transform: scale(1.0);
+}
+
+.block:first-child {
+    border: 4px solid black;
+}
+
+.block:active {
+    -webkit-transform: scale(0.9);
+}
+
+#indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    padding: 5px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Dual-screen web view demo",
+    "description": "Demo",
+    "version": "1.0",
+    "devices": [
+        "iPad"
+    ],
+    "platformConfig": {
+        "iOS": {
+            "nativeNavigation": false
+        }
+    },
+    "views": [
+        {
+            "uri": "html/local.html"
+        },
+        {
+            "uri": "html/remote.html",
+            "includeInNativeNavigation": false
+        }
+    ]
+}

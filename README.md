@@ -19,8 +19,11 @@ phone app using multiple views and multiple data services.
 * **authentication:** Demonstrates one way to implement authentication and 
 authorization via a REST API.
 
-* **dual-screen-video:** Demonstrates one way to create a dual-screen video 
-app for Apple TV.
+* **dual-screen-video:** Demonstrates how to create a dual-screen video app 
+for Apple TV.
+
+* **dual-screen-web:** Demonstrates how to create a dual-screen web app for 
+Apple TV.
 
 * **file-download:** Demonstrates how to download, retrieve and delete files
 on disk using `bc.device.requestDownload()` and associated methods and events.
