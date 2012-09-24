@@ -1,7 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: #28343b;
     color: white;
     font-size: 90%;
+    font-family: Helvetica;
 }
 
 #videos {
@@ -103,18 +109,17 @@ h1 {
         display: inline-block;
         vertical-align: top;
         height: 185px;
-        width: 30%;
         margin: 6px 4px;
     }
 }
 
-@media all and (orientation: landscape) and (min-width: 321px) {
+@media all and (orientation: landscape) and (min-width: 500px) {
     ul.results li {
-        width: 46%;
+        width: 30%;
     }
 }
 
-@media all and (orientation: landscape) and (min-width: 768px) {
+@media all and (orientation: landscape) and (min-width: 1000px) {
     ul.results li {
         width: 23%;
     }
