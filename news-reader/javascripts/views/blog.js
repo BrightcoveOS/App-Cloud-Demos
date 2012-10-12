@@ -43,11 +43,6 @@ function BlogView() {
         $(bc).bind("viewblur", function (evt) {
             endContentSession();
         });
-
-        // recalculate scroll depth whenever images are loaded
-        $(".page img").load(function (evt) {
-            bc.ui.refreshScrollers();
-        });
     };
 
     // handle a successful response from bc.core.getData()
@@ -81,8 +76,6 @@ function BlogView() {
         var markup = Mark.up(template, context);
 
         document.getElementById("article-index").innerHTML = markup;
-
-        bc.ui.refreshScrollers();
     };
 
     // render an individual article
@@ -96,7 +89,6 @@ function BlogView() {
         // transition to the detail "page"
         var page = document.getElementById("detail-page");
         bc.ui.forwardPage(page);
-        bc.ui.refreshScrollers();
     };
 
     // get blog articles from cache, or return an empty array
