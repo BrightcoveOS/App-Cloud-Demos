@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Home</title>
+
+<!-- required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="bc-manifest" content="../manifest.json" />
+
+<!-- brightcove styles -->
+<link rel="stylesheet" href="../stylesheets/brightcove-app-cloud-1.12.css" />
+
+<!-- custom styles -->
+<link rel="stylesheet" href="../stylesheets/home.css" />
+
+<!-- brightcove script -->
+<script type="text/javascript" src="../javascripts/lib/brightcove-app-cloud-1.12.js"></script>
+
+<!-- custom scripts -->
+<script type="text/javascript" src="../javascripts/views/home.js"></script> 
+<script>
+var view;
+
+// initialize the view when bc is ready
+$(bc).on("init", function () {
+    view = new HomeView();
+    view.init();
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="progress" class="progress">0%</div>
+
+<div class="page">
+    <div class="scroller">
+        <h1>Media Upload</h1>
+
+        <div>
+            <button id="get-from-camera">Get from camera</button>
+            <button id="get-from-library">Get from library</button>
+        </div>
+
+        <div id="result" class="result">...</div>
+    </div>
+</div>
+
+</body>
+
+</html>
