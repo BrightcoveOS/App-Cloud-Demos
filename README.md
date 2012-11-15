@@ -34,6 +34,9 @@ plot it on a map.
 * **i18n:** Demonstrates multiple language support at the HTML layer using 
 JavaScript templates, properties files, and parameterized content feeds.
 
+* **media-upload:** Demonstrates how to upload photos to a remote server 
+using the methods and events of `bc.device.mediaUpload`.
+
 * **news-reader:** Demonstrates how to create a simple news view from an RSS 
 feed.
 
