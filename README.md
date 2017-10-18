@@ -1,6 +1,6 @@
 # App Cloud Demos
 
-**App Cloud has been discontinued as a product, so this repo is obsolete**
+### **App Cloud has been discontinued as a product, so this repo is obsolete**
 
 This repository contains a variety of [App Cloud][1] code samples that can be 
 previewed in Google Chrome or in the App Cloud Workshop app for [iOS][5] or 
